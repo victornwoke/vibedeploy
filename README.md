@@ -1,63 +1,81 @@
 # VibeDeploy
 
-Production readiness checker for AI-built apps. VibeDeploy helps founders and
-builders assess whether an app is safe to launch across DevOps, security,
-monitoring, backup, deployment, and environment-management categories.
+A production readiness checker for early-stage web apps.
 
-## Stack
+VibeDeploy helps founders and builders validate deployment, security, monitoring, and operations readiness before launching a production app.
 
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- Zustand (with localStorage persistence)
-- Express static server
+## Key properties
 
-## Scripts
+- Browser-first React + TypeScript app
+- No backend report storage for MVP
+- Uses `sessionStorage` only for the current report session
+- Mailto-based contact flow for honest outreach
+- Static-ready Vite build with a small Express host
+
+## What it does
+
+- Guides users through a production readiness questionnaire
+- Scores readiness and surfaces key gaps
+- Generates a session-only report
+- Does not leak answers via URLs or persistent local storage
+- Does not send emails from a backend service
+
+## What it does not do yet
+
+- No automatic GitHub or source code scanning
+- No backend report history
+- No authenticated user accounts
+- No secrets management for production credentials in the browser
+
+## Getting started
+
+Install dependencies:
 
 ```bash
 corepack pnpm install
-corepack pnpm dev      # Runs dev server on localhost:3000
-corepack pnpm build    # Builds to dist/public and bundles server to dist/
-corepack pnpm start    # Runs production server
-corepack pnpm check    # TypeScript type check
-corepack pnpm format   # Format with Prettier
 ```
 
-## Development
+Run the app locally:
 
-The dev server runs on `localhost:3000` by default. No environment variables
-are required for local development.
+```bash
+corepack pnpm dev
+```
 
-## Production Deployment
+## Verification
 
-1. Run `corepack pnpm install && corepack pnpm build`
-2. Start the server: `corepack pnpm start` or `node dist/index.js`
-3. The app serves static files from `dist/public`
+Run static checks, build, and audit:
 
-## Security Notes
+```bash
+npx -y pnpm@10.26.0 run check
+npx -y pnpm@10.26.0 run build
+npx -y pnpm@10.26.0 audit --audit-level=low
+```
 
-- All scoring runs client-side - no data is sent to external services
-- Report data is stored in localStorage and passed via URL for sharing
-- The Express server serves only static files with no API endpoints
-- For production deployment, consider adding security headers (CSP, HSTS)
+## Build
 
-## Services
+```bash
+npx -y pnpm@10.26.0 run build
+```
 
-- £99 Production Readiness Audit
-- £500 Production Launch Fix
-- £1,500+ Full MVP Production Setup
-- £500–£1,000/month DevOps Care Plan
+## Deployment notes
 
-Contact: hello@victornwoke.com
+- Build a static production package with Vite
+- Serve using a dedicated static host or the Express static server in `server/index.ts`
+- Do not use `vite preview` as a production-grade server
+- Keep production credentials out of the repo
+
+## Security and privacy
+
+- Report data is stored only for the current browser session
+- No user answers are persisted across sessions in local storage
+- The contact form opens the user's email client
+- No backend email service is used in this MVP
+- Do not upload production secrets into the app form
 
 ## Documentation
 
-- [Product requirements](docs/01-product-prd.md)
-- [UI/UX specification](docs/02-ui-ux-spec.md)
-- [Technical architecture](docs/03-technical-architecture.md)
-- [Readiness scoring specification](docs/04-readiness-scoring-spec.md)
-- [Page copy and microcopy](docs/05-page-copy.md)
-- [Build roadmap](docs/06-build-roadmap.md)
-- [Portfolio integration plan](docs/07-portfolio-integration-plan.md)
-- [Go-to-market plan](docs/08-go-to-market-plan.md)
+See the `docs/` folder for full product, design, architecture, scoring, roadmap, and go-to-market documentation.
+
+## Contact
+
+Email: [victornwoke147@outlook.com](mailto:victornwoke147@outlook.com)

@@ -50,7 +50,9 @@ export default function Contact() {
   const mailtoBody = encodeURIComponent(
     `Name: ${form.name}\nEmail: ${form.email}\nService: ${form.service}\nApp URL: ${form.appUrl}\n\nMessage:\n${form.message}`
   );
-  const mailtoLink = `mailto:hello@victornwoke.com?subject=VibeDeploy%20Enquiry&body=${mailtoBody}`;
+  // Use the designated recipient for MVP static flow
+  const RECIPIENT_EMAIL = "victornwoke147@outlook.com";
+  const mailtoLink = `mailto:${RECIPIENT_EMAIL}?subject=VibeDeploy%20Enquiry&body=${mailtoBody}`;
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -239,7 +241,7 @@ export default function Contact() {
                   </button>
 
                   <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.3)" }}>
-                    No backend — opens your email client with a prefilled message.
+                    This MVP uses your email client to send messages. No form data is stored by VibeDeploy. If your email app doesn't open, email me directly at <a href="mailto:victornwoke147@outlook.com" style={{ color: "#A855F7" }}>victornwoke147@outlook.com</a>.
                   </p>
                 </form>
               </div>
@@ -258,15 +260,18 @@ export default function Contact() {
                     Or reach out directly
                   </h2>
                   <div className="space-y-3">
+                    <p className="text-sm mb-2" style={{ color: "rgba(255,255,255,0.6)" }}>
+                      For audits, deployment support, or DevSecOps help, email me directly:
+                    </p>
                     <a
-                      href="mailto:hello@victornwoke.com"
+                      href="mailto:victornwoke147@outlook.com"
                       className="flex items-center gap-3 text-sm transition-colors group"
                       style={{ color: "rgba(255,255,255,0.6)" }}
                       onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
                       onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
                     >
                       <Mail size={15} style={{ color: "#A855F7" }} />
-                      hello@victornwoke.com
+                      victornwoke147@outlook.com
                     </a>
                     <a
                       href="https://linkedin.com/in/victornwoke"
