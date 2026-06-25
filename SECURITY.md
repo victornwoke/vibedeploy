@@ -14,26 +14,28 @@ VibeDeploy is a client-side application that helps AI app builders assess produc
 
 ## Known Security Considerations
 
-### Report Data in URLs
+### Report Data
 
-When users complete the checker, their answers are encoded in the report URL
-(e.g., `/report?answers=...`). This is intentional for shareability but means:
+The current MVP does not encode questionnaire answers in the report URL. Final report data is stored temporarily in browser session storage for the active session.
 
-- Report URLs may contain sensitive information about your infrastructure
-- Anyone with the URL can view the report
-- Reports are not encrypted
+- Answers are kept in-memory during the session
+- Final report state is preserved only in `sessionStorage`
+- No report data is shared via query strings
 
-**Recommendation**: Treat report URLs as semi-private. Avoid sharing links that contain answers about your production environment.
+**Recommendation**: Do not enter secrets into the report form and close the
+browser tab when finished.
 
 ### Local Storage
 
-The checker form state (answers and email) is persisted in `localStorage`:
+This application does not persist checker answers or email to `localStorage`.
+Only a small theme preference is stored in `localStorage` for UI convenience.
 
-- Data persists indefinitely without expiration
-- Email addresses are stored unencrypted
-- Clearing browser storage resets the checker
+- Checker answers are kept in memory and session storage only
+- Email is not persisted across browser sessions
+- Clearing browser storage or closing the tab resets report state
 
-**Recommendation**: Users concerned about privacy should clear localStorage or use private browsing mode.
+**Recommendation**: Use private browsing if you want to avoid storing any theme
+preference locally.
 
 ### Contact Form
 
@@ -45,7 +47,7 @@ is actually sent to a backend.
 For production deployment to vibedeploy.victornwoke.com, the following headers
 should be configured at the reverse proxy/load balancer level:
 
-```
+```text
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
