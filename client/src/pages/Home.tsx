@@ -32,13 +32,8 @@ function Hero() {
         background: "#0F0F1A",
       }}
     >
-      {/* Background image + mesh overlay */}
+      {/* Background grid overlay */}
       <div className="absolute inset-0" aria-hidden="true">
-        <img
-          src="/manus-storage/vibedeploy-hero-bg_f49e3d74.jpg"
-          alt=""
-          className="w-full h-full object-cover opacity-40"
-        />
         <div
           className="absolute inset-0"
           style={{
@@ -93,7 +88,7 @@ function Hero() {
               maxWidth: "580px",
             }}
           >
-            You built something impressive with Lovable, Bolt, or Cursor. Now find out if it's safe to launch. Get a free production readiness score in 5 minutes — no engineering background required.
+            You built something impressive with Lovable, Bolt, or Cursor. Now find out if it's safe to launch. Get a free production readiness score in 5 minutes, no engineering background required.
           </p>
 
           {/* CTAs */}
@@ -102,7 +97,7 @@ function Hero() {
               href="/checker"
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white rounded-lg btn-primary focus:outline-none focus:ring-2 focus:ring-[#7C3AED] focus:ring-offset-2 focus:ring-offset-[#0F0F1A]"
             >
-              Check My App Now — It's Free
+              Check My App Now! It's Free
               <ArrowRight size={16} />
             </Link>
             <Link
@@ -145,11 +140,11 @@ function Hero() {
           }}
           aria-hidden="true"
         >
-          <img
-            src="/manus-storage/vibedeploy-score-preview_84cb24bf.jpg"
-            alt="Sample production readiness report preview"
-            className="w-full h-48 object-cover opacity-80"
-          />
+<img
+             src="/images/score-preview.jpg"
+             alt="Sample production readiness report preview"
+             className="w-full h-48 object-cover opacity-80"
+           />
           <div className="p-4">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: "rgba(255,255,255,0.4)" }}>
@@ -290,7 +285,7 @@ const STEPS = [
     icon: CheckCircle2,
     title: "Fix What Matters",
     description:
-      "Every risk category comes with a clear recommendation. Book Victor directly to fix the issues found — no vague agency proposals, just specific actionable work.",
+      "Every risk category comes with a clear recommendation. Book Victor directly to fix the issues found, no vague agency proposals, just specific actionable work.",
   },
 ];
 
@@ -420,7 +415,7 @@ function CategoriesPreview() {
               className="font-bold mb-4"
               style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)", color: "white" }}
             >
-              Every dimension of production readiness — scored.
+              Every dimension of production readiness is scored.
             </h2>
             <p className="mb-6 leading-relaxed" style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.9375rem" }}>
               Our scoring model covers the 13 most critical DevOps categories, weighted by real-world impact. Most AI-generated apps score between 20 and 55 on first attempt.
@@ -477,7 +472,7 @@ const SERVICES = [
   {
     price: "£500",
     title: "Production Launch Fix",
-    description: "Victor fixes your top 3 critical infrastructure issues — CI/CD, secrets, SSL, monitoring setup.",
+    description: "Victor fixes your top 3 critical infrastructure issues including CI/CD, secrets, SSL, and monitoring setup.",
     delivery: "5–7 business days",
     highlight: true,
   },
@@ -633,7 +628,7 @@ function FounderProof() {
               Built by a Cloud & DevOps engineer who has seen what breaks in production.
             </h2>
             <p className="mb-6 leading-relaxed" style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.9375rem" }}>
-              Victor Nwoke is a Cloud and DevOps engineer with experience building and maintaining infrastructure on Azure, AWS, and GCP. VibeDeploy was created because the gap between an AI-generated demo and a secure, production-ready application is real, consistent, and fixable — with the right guidance.
+              Victor Nwoke is a Cloud and DevOps engineer with experience building and maintaining infrastructure on Azure, AWS, and GCP. VibeDeploy was created because the gap between an AI-generated demo and a secure, production-ready application is real, consistent, and fixable with the right guidance.
             </p>
             <a
               href="https://victornwoke.com"
@@ -660,8 +655,8 @@ function FounderProof() {
                 aria-hidden="true"
               />
               <img
-                src="/manus-storage/vibedeploy-founder_516681ca.jpg"
-                alt="Victor Nwoke — Cloud and DevOps Engineer"
+                src="/images/about-victor.jpg"
+                alt="Victor Nwoke | Cloud and DevOps Engineer"
                 className="relative w-48 h-48 md:w-56 md:h-56 rounded-2xl object-cover"
                 style={{ border: "2px solid rgba(124, 58, 237, 0.3)" }}
               />
@@ -715,7 +710,7 @@ function FinalCTA() {
             href="/checker"
             className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white rounded-xl btn-primary"
           >
-            Check My App Now — It's Free
+            Check My App Now!  It's Free
             <ArrowRight size={16} />
           </Link>
           <p className="mt-4 text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>

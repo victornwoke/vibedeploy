@@ -1,4 +1,4 @@
-// VibeDeploy — 13-Category Readiness Questionnaire
+// VibeDeploy - 13-Category Readiness Questionnaire
 // Based on Section 4 of the Product Documentation Pack
 
 import type { Category } from "./types";
@@ -72,7 +72,7 @@ export const CATEGORIES: Category[] = [
         text: "Are any API keys or passwords stored in your GitHub repository?",
         riskIfBad: "critical",
         options: [
-          { value: "no", label: "No — never committed", score: 4 },
+          { value: "no", label: "No - never committed", score: 4 },
           { value: "not_sure", label: "Not sure", score: 1 },
           { value: "yes", label: "Yes", score: 0 },
         ],
@@ -82,8 +82,8 @@ export const CATEGORIES: Category[] = [
         text: "Do you use environment variables for all secrets?",
         riskIfBad: "critical",
         options: [
-          { value: "yes", label: "Yes — all secrets in env vars", score: 3 },
-          { value: "some", label: "Some — partially done", score: 2 },
+          { value: "yes", label: "Yes - all secrets in env vars", score: 3 },
+          { value: "some", label: "Some - partially done", score: 2 },
           { value: "no", label: "No", score: 0 },
         ],
       },
@@ -124,9 +124,9 @@ export const CATEGORIES: Category[] = [
         text: "Do you have separate environment variables for staging and production?",
         riskIfBad: "critical",
         options: [
-          { value: "yes", label: "Yes — fully separated", score: 3 },
+          { value: "yes", label: "Yes - fully separated", score: 3 },
           { value: "partial", label: "Partially", score: 2 },
-          { value: "no", label: "No — same config everywhere", score: 0 },
+          { value: "no", label: "No - same config everywhere", score: 0 },
         ],
       },
       {
@@ -166,7 +166,7 @@ export const CATEGORIES: Category[] = [
         text: "Is your application containerised with Docker?",
         riskIfBad: "medium",
         options: [
-          { value: "yes", label: "Yes — Dockerfile in repo", score: 3 },
+          { value: "yes", label: "Yes - Dockerfile in repo", score: 3 },
           { value: "partial", label: "Partially / In progress", score: 2 },
           { value: "no", label: "No", score: 0 },
         ],
@@ -185,7 +185,7 @@ export const CATEGORIES: Category[] = [
         text: "Are your container images stored in a private registry?",
         riskIfBad: "high",
         options: [
-          { value: "yes", label: "Yes — private registry", score: 2 },
+          { value: "yes", label: "Yes - private registry", score: 2 },
           { value: "public", label: "Public registry", score: 1 },
           { value: "no", label: "No / Not applicable", score: 0 },
         ],
@@ -208,9 +208,9 @@ export const CATEGORIES: Category[] = [
         text: "Are deployments automated (not manual FTP or copy-paste)?",
         riskIfBad: "critical",
         options: [
-          { value: "yes", label: "Yes — fully automated", score: 3 },
+          { value: "yes", label: "Yes - fully automated", score: 3 },
           { value: "partial", label: "Partially automated", score: 2 },
-          { value: "no", label: "No — manual deployments", score: 0 },
+          { value: "no", label: "No - manual deployments", score: 0 },
         ],
       },
       {
@@ -228,9 +228,9 @@ export const CATEGORIES: Category[] = [
         text: "Does your deployment process cause downtime?",
         riskIfBad: "high",
         options: [
-          { value: "no_downtime", label: "No — zero-downtime deploys", score: 2 },
+          { value: "no_downtime", label: "No - zero-downtime deploys", score: 2 },
           { value: "brief", label: "Brief downtime (< 1 min)", score: 1 },
-          { value: "yes", label: "Yes — significant downtime", score: 0 },
+          { value: "yes", label: "Yes - significant downtime", score: 0 },
         ],
       },
       {
@@ -239,7 +239,7 @@ export const CATEGORIES: Category[] = [
         riskIfBad: "high",
         options: [
           { value: "yes", label: "Yes", score: 2 },
-          { value: "no", label: "No — deploy straight to production", score: 0 },
+          { value: "no", label: "No - deploy straight to production", score: 0 },
         ],
       },
     ],
@@ -260,8 +260,8 @@ export const CATEGORIES: Category[] = [
         text: "Do you have uptime monitoring for your application?",
         riskIfBad: "high",
         options: [
-          { value: "paid", label: "Yes — paid monitoring tool", score: 3 },
-          { value: "free", label: "Yes — free tool (UptimeRobot etc.)", score: 2 },
+          { value: "paid", label: "Yes - paid monitoring tool", score: 3 },
+          { value: "free", label: "Yes - free tool (UptimeRobot etc.)", score: 2 },
           { value: "no", label: "No monitoring", score: 0 },
         ],
       },
@@ -270,7 +270,7 @@ export const CATEGORIES: Category[] = [
         text: "Do you receive alerts when your app goes down?",
         riskIfBad: "high",
         options: [
-          { value: "yes", label: "Yes — immediate alerts", score: 3 },
+          { value: "yes", label: "Yes - immediate alerts", score: 3 },
           { value: "no", label: "No", score: 0 },
         ],
       },
@@ -279,7 +279,7 @@ export const CATEGORIES: Category[] = [
         text: "Are application errors logged and searchable?",
         riskIfBad: "high",
         options: [
-          { value: "yes", label: "Yes — structured logging (Sentry, Datadog etc.)", score: 2 },
+          { value: "yes", label: "Yes - structured logging (Sentry, Datadog etc.)", score: 2 },
           { value: "basic", label: "Basic console logs only", score: 1 },
           { value: "no", label: "No logging", score: 0 },
         ],
@@ -289,7 +289,7 @@ export const CATEGORIES: Category[] = [
         text: "Do you review logs and metrics at least monthly?",
         riskIfBad: "medium",
         options: [
-          { value: "yes", label: "Yes — regular review", score: 2 },
+          { value: "yes", label: "Yes - regular review", score: 2 },
           { value: "no", label: "No", score: 0 },
         ],
       },
@@ -311,7 +311,7 @@ export const CATEGORIES: Category[] = [
         text: "Are your database backups automated?",
         riskIfBad: "critical",
         options: [
-          { value: "yes", label: "Yes — automated daily backups", score: 4 },
+          { value: "yes", label: "Yes - automated daily backups", score: 4 },
           { value: "manual", label: "Manual backups only", score: 2 },
           { value: "no", label: "No backups", score: 0 },
         ],
@@ -321,8 +321,8 @@ export const CATEGORIES: Category[] = [
         text: "Have you tested your backup restoration process?",
         riskIfBad: "critical",
         options: [
-          { value: "yes", label: "Yes — tested and documented", score: 3 },
-          { value: "no", label: "No — never tested", score: 0 },
+          { value: "yes", label: "Yes - tested and documented", score: 3 },
+          { value: "no", label: "No - never tested", score: 0 },
         ],
       },
       {
@@ -330,8 +330,8 @@ export const CATEGORIES: Category[] = [
         text: "Are backups stored in a separate location from your primary data?",
         riskIfBad: "high",
         options: [
-          { value: "yes", label: "Yes — offsite/separate region", score: 3 },
-          { value: "no", label: "No — same location", score: 0 },
+          { value: "yes", label: "Yes - offsite/separate region", score: 3 },
+          { value: "no", label: "No - same location", score: 0 },
         ],
       },
     ],
@@ -352,9 +352,9 @@ export const CATEGORIES: Category[] = [
         text: "Do you have a separate staging environment?",
         riskIfBad: "critical",
         options: [
-          { value: "yes", label: "Yes — full staging environment", score: 3 },
+          { value: "yes", label: "Yes - full staging environment", score: 3 },
           { value: "local", label: "Local development only", score: 1 },
-          { value: "no", label: "No — test in production", score: 0 },
+          { value: "no", label: "No - test in production", score: 0 },
         ],
       },
       {
@@ -362,8 +362,8 @@ export const CATEGORIES: Category[] = [
         text: "Does your staging environment use a separate database from production?",
         riskIfBad: "critical",
         options: [
-          { value: "yes", label: "Yes — separate databases", score: 3 },
-          { value: "no", label: "No — shared database", score: 0 },
+          { value: "yes", label: "Yes - separate databases", score: 3 },
+          { value: "no", label: "No - shared database", score: 0 },
           { value: "no_staging", label: "No staging environment", score: 0 },
         ],
       },
@@ -372,7 +372,7 @@ export const CATEGORIES: Category[] = [
         text: "Do you always deploy to staging before production?",
         riskIfBad: "high",
         options: [
-          { value: "yes", label: "Yes — always", score: 2 },
+          { value: "yes", label: "Yes - always", score: 2 },
           { value: "sometimes", label: "Sometimes", score: 1 },
           { value: "no", label: "No", score: 0 },
         ],
@@ -395,7 +395,7 @@ export const CATEGORIES: Category[] = [
         text: "Does your repository have a README with deployment instructions?",
         riskIfBad: "medium",
         options: [
-          { value: "yes", label: "Yes — comprehensive README", score: 2 },
+          { value: "yes", label: "Yes - comprehensive README", score: 2 },
           { value: "basic", label: "Basic README only", score: 1 },
           { value: "no", label: "No README", score: 0 },
         ],
@@ -405,7 +405,7 @@ export const CATEGORIES: Category[] = [
         text: "Do you have a runbook or incident response guide?",
         riskIfBad: "high",
         options: [
-          { value: "yes", label: "Yes — documented runbook", score: 2 },
+          { value: "yes", label: "Yes - documented runbook", score: 2 },
           { value: "no", label: "No", score: 0 },
         ],
       },
@@ -414,7 +414,7 @@ export const CATEGORIES: Category[] = [
         text: "Is your system architecture documented?",
         riskIfBad: "medium",
         options: [
-          { value: "yes", label: "Yes — architecture diagram/doc", score: 1 },
+          { value: "yes", label: "Yes - architecture diagram/doc", score: 1 },
           { value: "no", label: "No", score: 0 },
         ],
       },
@@ -436,8 +436,8 @@ export const CATEGORIES: Category[] = [
         text: "Is your application served over HTTPS only?",
         riskIfBad: "critical",
         options: [
-          { value: "yes", label: "Yes — HTTPS enforced", score: 3 },
-          { value: "no", label: "No — HTTP accessible", score: 0 },
+          { value: "yes", label: "Yes - HTTPS enforced", score: 3 },
+          { value: "no", label: "No - HTTP accessible", score: 0 },
         ],
       },
       {
@@ -455,7 +455,7 @@ export const CATEGORIES: Category[] = [
         text: "Are dependency vulnerabilities scanned automatically?",
         riskIfBad: "high",
         options: [
-          { value: "yes", label: "Yes — automated scanning", score: 2 },
+          { value: "yes", label: "Yes - automated scanning", score: 2 },
           { value: "no", label: "No", score: 0 },
         ],
       },
@@ -464,7 +464,7 @@ export const CATEGORIES: Category[] = [
         text: "Do you have rate limiting on your API endpoints?",
         riskIfBad: "high",
         options: [
-          { value: "yes", label: "Yes — rate limiting enabled", score: 2 },
+          { value: "yes", label: "Yes - rate limiting enabled", score: 2 },
           { value: "partial", label: "Partial / Some endpoints", score: 1 },
           { value: "no", label: "No", score: 0 },
         ],
@@ -474,7 +474,7 @@ export const CATEGORIES: Category[] = [
         text: "Has any security review been performed on your app?",
         riskIfBad: "high",
         options: [
-          { value: "professional", label: "Yes — professional review", score: 3 },
+          { value: "professional", label: "Yes - professional review", score: 3 },
           { value: "self", label: "Self-review only", score: 1 },
           { value: "no", label: "No review", score: 0 },
         ],
@@ -506,9 +506,9 @@ export const CATEGORIES: Category[] = [
         text: "Do users see helpful error messages (not raw stack traces)?",
         riskIfBad: "high",
         options: [
-          { value: "yes", label: "Yes — friendly error pages", score: 2 },
+          { value: "yes", label: "Yes - friendly error pages", score: 2 },
           { value: "partial", label: "Sometimes", score: 1 },
-          { value: "no", label: "No — raw errors shown", score: 0 },
+          { value: "no", label: "No - raw errors shown", score: 0 },
         ],
       },
       {
@@ -516,7 +516,7 @@ export const CATEGORIES: Category[] = [
         text: "Are errors automatically tracked and reported?",
         riskIfBad: "medium",
         options: [
-          { value: "yes", label: "Yes — Sentry or similar", score: 1 },
+          { value: "yes", label: "Yes - Sentry or similar", score: 1 },
           { value: "no", label: "No", score: 0 },
         ],
       },
@@ -538,8 +538,8 @@ export const CATEGORIES: Category[] = [
         text: "Does your app use a custom domain (not a platform subdomain)?",
         riskIfBad: "medium",
         options: [
-          { value: "yes", label: "Yes — custom domain", score: 3 },
-          { value: "no", label: "No — platform subdomain only", score: 0 },
+          { value: "yes", label: "Yes - custom domain", score: 3 },
+          { value: "no", label: "No - platform subdomain only", score: 0 },
         ],
       },
       {
@@ -547,7 +547,7 @@ export const CATEGORIES: Category[] = [
         text: "Is your SSL certificate valid and auto-renewing?",
         riskIfBad: "critical",
         options: [
-          { value: "yes", label: "Yes — auto-renewing SSL", score: 2 },
+          { value: "yes", label: "Yes - auto-renewing SSL", score: 2 },
           { value: "manual", label: "Manual renewal", score: 1 },
           { value: "no", label: "No SSL / HTTP only", score: 0 },
         ],
@@ -580,9 +580,9 @@ export const CATEGORIES: Category[] = [
         text: "Does your database have access controls (not open to the internet)?",
         riskIfBad: "critical",
         options: [
-          { value: "yes", label: "Yes — restricted access", score: 3 },
+          { value: "yes", label: "Yes - restricted access", score: 3 },
           { value: "partial", label: "Partially restricted", score: 1 },
-          { value: "no", label: "No — publicly accessible", score: 0 },
+          { value: "no", label: "No - publicly accessible", score: 0 },
         ],
       },
       {
@@ -590,8 +590,8 @@ export const CATEGORIES: Category[] = [
         text: "Do you use database migrations (not manual schema changes)?",
         riskIfBad: "high",
         options: [
-          { value: "yes", label: "Yes — migration files in repo", score: 2 },
-          { value: "no", label: "No — manual changes", score: 0 },
+          { value: "yes", label: "Yes - migration files in repo", score: 2 },
+          { value: "no", label: "No - manual changes", score: 0 },
         ],
       },
       {
@@ -599,7 +599,7 @@ export const CATEGORIES: Category[] = [
         text: "Has your database been tested under expected production load?",
         riskIfBad: "high",
         options: [
-          { value: "yes", label: "Yes — load tested", score: 2 },
+          { value: "yes", label: "Yes - load tested", score: 2 },
           { value: "no", label: "No", score: 0 },
         ],
       },

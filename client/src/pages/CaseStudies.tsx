@@ -14,7 +14,7 @@ const CASE_STUDIES = [
     tag: "Secrets Management",
     title: "SaaS Founder Discovers 3 API Keys Committed to GitHub",
     summary:
-      "A solo founder building a B2B SaaS with Lovable scored 31/100 on the VibeDeploy checker. The audit revealed three live API keys committed to their public repository — including their Stripe secret key.",
+      "A solo founder building a B2B SaaS with Lovable scored 31/100 on the VibeDeploy checker. The audit revealed three live API keys committed to their public repository, including their Stripe secret key.",
     problem:
       "The founder had used Lovable to build an MVP quickly and pushed to GitHub without reviewing what the AI had generated. Three API keys, including a live Stripe secret key, were in plain text in the codebase.",
     solution:
@@ -238,7 +238,7 @@ export default function CaseStudies() {
               href="/checker"
               className="inline-flex items-center gap-2 px-6 py-3.5 text-base font-semibold text-white rounded-xl btn-primary"
             >
-              Check My App Now — It's Free
+              Check My App Now!  It's Free
               <ArrowRight size={16} />
             </Link>
           </div>

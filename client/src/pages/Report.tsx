@@ -404,7 +404,7 @@ export default function Report() {
                   : result.overallRisk === "high"
                   ? "Significant production risks identified."
                   : result.overallRisk === "medium"
-                  ? "Some gaps exist — launch with caution."
+                  ? "Some gaps exist, launch with caution."
                   : "Good posture with minor gaps."}
               </h1>
               <p className="mb-5 leading-relaxed" style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.9375rem" }}>
@@ -527,7 +527,7 @@ export default function Report() {
             href="/contact"
             className="block w-full text-center px-4 py-3.5 text-sm font-semibold text-white rounded-xl btn-primary"
           >
-            Get Victor to Fix These Issues — {result.suggestedService}
+            Get Victor to Fix These Issues - {result.suggestedService}
           </Link>
         </div>
       </main>

@@ -24,7 +24,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2.5">
               <img
-                src="/manus-storage/vibedeploy-logo_1ddc6391.png"
+                src="/images/vibedeploy-logo.png"
                 alt="VibeDeploy"
                 className="w-7 h-7 object-contain"
               />
@@ -107,7 +107,7 @@ export default function Footer() {
                 onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}
               >
-                <span>Victor Nwoke — Cloud & DevOps Engineer</span>
+                <span>Victor Nwoke | Cloud & DevOps Engineer</span>
                 <ExternalLink size={12} className="opacity-60 group-hover:opacity-100 transition-opacity" />
               </a>
               <p className="mt-2 text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>

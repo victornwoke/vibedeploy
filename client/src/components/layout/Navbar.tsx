@@ -44,7 +44,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 group" aria-label="VibeDeploy home">
               <img
-                src="/manus-storage/vibedeploy-logo_1ddc6391.png"
+                src="/images/vibedeploy-logo.png"
                 alt="VibeDeploy shield logo"
                 className="w-8 h-8 object-contain"
               />
@@ -134,7 +134,7 @@ export default function Navbar() {
                   href="/checker"
                   className="block w-full text-center px-4 py-2.5 text-sm font-semibold text-white rounded-lg btn-primary"
                 >
-                  Check My App — It's Free
+                  Check My App!  It's Free
                 </Link>
               </div>
             </div>

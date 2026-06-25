@@ -6,7 +6,6 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Link } from "wouter";
 import {
-  CheckCircle2,
   ArrowRight,
   Mail,
   Linkedin,
@@ -41,8 +40,6 @@ export default function Contact() {
     appUrl: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -50,20 +47,16 @@ export default function Contact() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setSubmitting(true);
-    // Simulate submission (no backend — mailto fallback)
-    setTimeout(() => {
-      setSubmitting(false);
-      setSubmitted(true);
-    }, 1000);
-  }
-
   const mailtoBody = encodeURIComponent(
     `Name: ${form.name}\nEmail: ${form.email}\nService: ${form.service}\nApp URL: ${form.appUrl}\n\nMessage:\n${form.message}`
   );
   const mailtoLink = `mailto:hello@victornwoke.com?subject=VibeDeploy%20Enquiry&body=${mailtoBody}`;
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    // Opens user's email client with prefilled message - no backend
+    window.location.href = mailtoLink;
+  }
 
   return (
     <div style={{ backgroundColor: "#0F0F1A", minHeight: "100vh" }}>
@@ -91,189 +84,164 @@ export default function Contact() {
                 >
                   Let's get your app production-ready.
                 </h1>
-                <p className="mb-8" style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.9375rem" }}>
-                  Fill in the form and Victor will respond within 24 hours. Not sure which service you need? Select "Not sure yet" and describe your situation.
+                <p className="mb-8 leading-relaxed" style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.9375rem" }}>
+                  Fill in the details below and click "Send Message" to open your email client with a prefilled message.
+                  Victor will respond within 24 hours on business days.
                 </p>
 
-                {submitted ? (
-                  <div
-                    className="p-8 rounded-2xl text-center"
-                    style={{
-                      background: "rgba(16, 185, 129, 0.08)",
-                      border: "1px solid rgba(16, 185, 129, 0.25)",
-                    }}
-                  >
-                    <CheckCircle2 size={40} style={{ color: "#10B981", margin: "0 auto 16px" }} />
-                    <h2 className="font-bold mb-2" style={{ color: "white", fontSize: "1.25rem" }}>
-                      Message received!
-                    </h2>
-                    <p className="mb-4" style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.9375rem" }}>
-                      Victor will be in touch within 24 hours. In the meantime, you can also reach out directly.
-                    </p>
-                    <a
-                      href={mailtoLink}
-                      className="inline-flex items-center gap-2 text-sm font-medium"
-                      style={{ color: "#10B981" }}
-                    >
-                      <Mail size={14} />
-                      hello@victornwoke.com
-                    </a>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} noValidate className="space-y-5">
-                    {/* Name + Email */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label
-                          htmlFor="name"
-                          className="block text-xs font-semibold tracking-widest uppercase mb-1.5"
-                          style={{ color: "rgba(255,255,255,0.4)" }}
-                        >
-                          Your Name *
-                        </label>
-                        <input
-                          id="name"
-                          name="name"
-                          type="text"
-                          required
-                          value={form.name}
-                          onChange={handleChange}
-                          placeholder="Jane Smith"
-                          className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
-                          style={{
-                            background: "rgba(255,255,255,0.06)",
-                            border: "1px solid rgba(255,255,255,0.1)",
-                            color: "white",
-                          }}
-                          autoComplete="name"
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="email"
-                          className="block text-xs font-semibold tracking-widest uppercase mb-1.5"
-                          style={{ color: "rgba(255,255,255,0.4)" }}
-                        >
-                          Email Address *
-                        </label>
-                        <input
-                          id="email"
-                          name="email"
-                          type="email"
-                          required
-                          value={form.email}
-                          onChange={handleChange}
-                          placeholder="jane@company.com"
-                          className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
-                          style={{
-                            background: "rgba(255,255,255,0.06)",
-                            border: "1px solid rgba(255,255,255,0.1)",
-                            color: "white",
-                          }}
-                          autoComplete="email"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Service */}
+                <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                  {/* Name + Email */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label
-                        htmlFor="service"
+                        htmlFor="name"
                         className="block text-xs font-semibold tracking-widest uppercase mb-1.5"
                         style={{ color: "rgba(255,255,255,0.4)" }}
                       >
-                        Service Interested In *
-                      </label>
-                      <select
-                        id="service"
-                        name="service"
-                        required
-                        value={form.service}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED] appearance-none"
-                        style={{
-                          background: "rgba(255,255,255,0.06)",
-                          border: "1px solid rgba(255,255,255,0.1)",
-                          color: form.service ? "white" : "rgba(255,255,255,0.35)",
-                        }}
-                      >
-                        <option value="" disabled style={{ background: "#1E1B4B", color: "white" }}>
-                          Select a service...
-                        </option>
-                        {SERVICES_OPTIONS.map((opt) => (
-                          <option key={opt.value} value={opt.value} style={{ background: "#1E1B4B", color: "white" }}>
-                            {opt.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    {/* App URL */}
-                    <div>
-                      <label
-                        htmlFor="appUrl"
-                        className="block text-xs font-semibold tracking-widest uppercase mb-1.5"
-                        style={{ color: "rgba(255,255,255,0.4)" }}
-                      >
-                        Your App URL (Optional)
+                        Your Name *
                       </label>
                       <input
-                        id="appUrl"
-                        name="appUrl"
-                        type="url"
-                        value={form.appUrl}
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        value={form.name}
                         onChange={handleChange}
-                        placeholder="https://myapp.com"
+                        placeholder="Jane Smith"
                         className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
                         style={{
                           background: "rgba(255,255,255,0.06)",
                           border: "1px solid rgba(255,255,255,0.1)",
                           color: "white",
                         }}
-                        autoComplete="url"
+                        autoComplete="name"
                       />
                     </div>
-
-                    {/* Message */}
                     <div>
                       <label
-                        htmlFor="message"
+                        htmlFor="email"
                         className="block text-xs font-semibold tracking-widest uppercase mb-1.5"
                         style={{ color: "rgba(255,255,255,0.4)" }}
                       >
-                        Tell Victor About Your App *
+                        Email Address *
                       </label>
-                      <textarea
-                        id="message"
-                        name="message"
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
                         required
-                        rows={5}
-                        value={form.message}
+                        value={form.email}
                         onChange={handleChange}
-                        placeholder="What did you build? What AI tool did you use? What are you most worried about?"
-                        className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED] resize-none"
+                        placeholder="jane@company.com"
+                        className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
                         style={{
                           background: "rgba(255,255,255,0.06)",
                           border: "1px solid rgba(255,255,255,0.1)",
                           color: "white",
                         }}
+                        autoComplete="email"
                       />
                     </div>
+                  </div>
 
-                    <button
-                      type="submit"
-                      disabled={submitting || !form.name || !form.email || !form.service || !form.message}
-                      className="w-full px-6 py-3.5 text-sm font-semibold text-white rounded-xl btn-primary disabled:opacity-40 disabled:cursor-not-allowed"
+                  {/* Service */}
+                  <div>
+                    <label
+                      htmlFor="service"
+                      className="block text-xs font-semibold tracking-widest uppercase mb-1.5"
+                      style={{ color: "rgba(255,255,255,0.4)" }}
                     >
-                      {submitting ? "Sending..." : "Send Message"}
-                      {!submitting && <ArrowRight size={15} className="inline ml-2" />}
-                    </button>
+                      Service Interested In *
+                    </label>
+                    <select
+                      id="service"
+                      name="service"
+                      required
+                      value={form.service}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED] appearance-none"
+                      style={{
+                        background: "rgba(255,255,255,0.06)",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        color: form.service ? "white" : "rgba(255,255,255,0.35)",
+                      }}
+                    >
+                      <option value="" disabled style={{ background: "#1E1B4B", color: "white" }}>
+                        Select a service...
+                      </option>
+                      {SERVICES_OPTIONS.map((opt) => (
+                        <option key={opt.value} value={opt.value} style={{ background: "#1E1B4B", color: "white" }}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-                    <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.3)" }}>
-                      Victor responds within 24 hours on business days.
-                    </p>
-                  </form>
-                )}
+                  {/* App URL */}
+                  <div>
+                    <label
+                      htmlFor="appUrl"
+                      className="block text-xs font-semibold tracking-widest uppercase mb-1.5"
+                      style={{ color: "rgba(255,255,255,0.4)" }}
+                    >
+                      Your App URL (Optional)
+                    </label>
+                    <input
+                      id="appUrl"
+                      name="appUrl"
+                      type="url"
+                      value={form.appUrl}
+                      onChange={handleChange}
+                      placeholder="https://myapp.com"
+                      className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
+                      style={{
+                        background: "rgba(255,255,255,0.06)",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        color: "white",
+                      }}
+                      autoComplete="url"
+                    />
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-xs font-semibold tracking-widest uppercase mb-1.5"
+                      style={{ color: "rgba(255,255,255,0.4)" }}
+                    >
+                      Tell Victor About Your App *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      value={form.message}
+                      onChange={handleChange}
+                      placeholder="What did you build? What AI tool did you use? What are you most worried about?"
+                      className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED] resize-none"
+                      style={{
+                        background: "rgba(255,255,255,0.06)",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        color: "white",
+                      }}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={!form.name || !form.email || !form.service || !form.message}
+                    className="w-full px-6 py-3.5 text-sm font-semibold text-white rounded-xl btn-primary disabled:opacity-40 disabled:cursor-not-allowed"
+                  >
+                    Send Message
+                    <ArrowRight size={15} className="inline ml-2" />
+                  </button>
+
+                  <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.3)" }}>
+                    No backend — opens your email client with a prefilled message.
+                  </p>
+                </form>
               </div>
 
               {/* Right: contact info + trust */}

@@ -88,7 +88,7 @@ export default function About() {
                     aria-hidden="true"
                   />
                   <img
-                    src="/manus-storage/vibedeploy-founder_516681ca.jpg"
+                    src="/images/about-victor.jpg"
                     alt="Victor Nwoke — Cloud and DevOps Engineer, founder of VibeDeploy"
                     className="relative w-64 h-64 md:w-72 md:h-72 rounded-2xl object-cover"
                     style={{ border: "2px solid rgba(124, 58, 237, 0.3)" }}

@@ -380,7 +380,7 @@ export default function Checker() {
             {/* Skip / answer later note */}
             {!allAnswered && (
               <p className="text-center mt-4 text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
-                You can skip unanswered questions — unanswered questions score 0.
+                You can skip unanswered questions, unanswered questions score 0.
               </p>
             )}
           </div>

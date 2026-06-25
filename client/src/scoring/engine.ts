@@ -1,5 +1,5 @@
 // VibeDeploy Scoring Engine
-// Pure TypeScript functions — no side effects, fully unit-testable
+// Pure TypeScript functions - no side effects, fully unit-testable
 // Based on Section 4 of the Product Documentation Pack
 
 import { CATEGORIES } from "./questions";
@@ -130,7 +130,7 @@ export function calculateCategoryScore(
 }
 
 /**
- * Main scoring function — accepts all answers, returns full ScoringResult
+ * Main scoring function - accepts all answers, returns full ScoringResult
  */
 export function calculateScore(answers: CheckerAnswers): ScoringResult {
   const categoryScores: CategoryScore[] = [];
@@ -194,7 +194,7 @@ function getSuggestedService(
   if (totalScore < 70) {
     return "£1,500+ Full MVP Production Setup";
   }
-  // Check if monitoring is weak — suggest care plan
+  // Check if monitoring is weak - suggest care plan
   const monitoringCat = categories.find((c) => c.id === "monitoring");
   if (monitoringCat && monitoringCat.score < 50) {
     return "£500–£1,000/month DevOps Care Plan";
@@ -212,7 +212,7 @@ function getQuestionRecommendation(
 ): string {
   const recommendations: Record<string, string> = {
     "cicd_automated_build": "Set up a basic CI pipeline using GitHub Actions. Even a simple build-and-test workflow catches regressions before they reach production.",
-    "cicd_platform": "GitHub Actions is the recommended CI/CD platform for most projects — it's free for public repos and integrates directly with your codebase.",
+    "cicd_platform": "GitHub Actions is the recommended CI/CD platform for most projects - it's free for public repos and integrates directly with your codebase.",
     "cicd_tests_on_pr": "Add automated tests that run on every pull request. Start with smoke tests and critical path tests if you have no test suite yet.",
     "cicd_block_failed": "Configure your CI pipeline to block merges when builds or tests fail. This prevents broken code from reaching production.",
     "secrets_in_repo": "Immediately audit your repository history for committed secrets using tools like git-secrets or GitHub's secret scanning. Rotate any exposed keys immediately.",
@@ -233,15 +233,15 @@ function getQuestionRecommendation(
     "monitoring_alerts": "Configure alerts to notify you via email, Slack, or SMS when your app goes down or performance degrades.",
     "monitoring_error_logs": "Integrate Sentry (free tier available) for automatic error tracking and alerting. It takes 30 minutes to set up and will save you hours of debugging.",
     "monitoring_review": "Schedule a monthly infrastructure review to check error rates, uptime, and performance metrics.",
-    "backup_automated": "Enable automated daily backups on your database. Supabase, PlanetScale, and most managed databases offer this by default — ensure it's turned on.",
+    "backup_automated": "Enable automated daily backups on your database. Supabase, PlanetScale, and most managed databases offer this by default - ensure it's turned on.",
     "backup_tested": "Test your backup restoration process now, before you need it. Document the steps so you can recover quickly under pressure.",
     "backup_offsite": "Store backups in a different cloud region or provider from your primary database to protect against regional outages.",
     "staging_env": "Create a staging environment that mirrors production. This is the single most effective way to catch issues before they affect real users.",
-    "staging_db": "Use a separate database for staging. Never test against production data — a single mistake can corrupt or delete real user data.",
+    "staging_db": "Use a separate database for staging. Never test against production data - a single mistake can corrupt or delete real user data.",
     "staging_deploy_first": "Always deploy to staging first and verify the deployment before pushing to production.",
     "docs_readme": "Write a comprehensive README with setup instructions, environment variable documentation, and deployment steps.",
     "docs_runbook": "Create an incident response runbook documenting how to handle common failures: database down, deployment failed, high error rate.",
-    "docs_architecture": "Document your system architecture — even a simple diagram showing your frontend, backend, database, and third-party services is valuable.",
+    "docs_architecture": "Document your system architecture - even a simple diagram showing your frontend, backend, database, and third-party services is valuable.",
     "security_https": "Enforce HTTPS on all endpoints. Redirect HTTP to HTTPS and set HSTS headers. Most hosting platforms handle this automatically.",
     "security_waf": "Consider adding a WAF through Cloudflare (free tier available) to protect against common web attacks.",
     "security_deps": "Enable GitHub Dependabot or Snyk to automatically scan for vulnerable dependencies and create pull requests with fixes.",

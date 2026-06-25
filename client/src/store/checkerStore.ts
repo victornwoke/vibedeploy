@@ -1,4 +1,4 @@
-// VibeDeploy Checker Store — Zustand with localStorage persistence
+// VibeDeploy Checker Store - Zustand with localStorage persistence
 // Manages multi-step checker form state client-side
 
 import { create } from "zustand";
