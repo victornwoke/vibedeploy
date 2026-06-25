@@ -1,6 +1,7 @@
 // VibeDeploy Checker Page — 13-category multi-step form
 // Design: Dark DevOps Command Centre
 
+import { useEffect } from "react";
 import { useLocation } from "wouter";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -301,6 +302,13 @@ export default function Checker() {
     prevCategory,
     complete,
   } = useCheckerStore();
+
+  // When starting a new checker session, clear any prior report in sessionStorage
+  useEffect(() => {
+    try {
+      sessionStorage.removeItem(REPORT_STORAGE_KEY);
+    } catch {}
+  }, []);
 
   const isLastCategory = currentCategoryIndex === totalCategories - 1;
   const isEmailStep = currentCategoryIndex === totalCategories; // virtual step after last category

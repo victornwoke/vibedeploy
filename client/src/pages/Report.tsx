@@ -358,10 +358,22 @@ export default function Report() {
   const [result, setResult] = useState<ScoringResult | null>(null);
   const [copied, setCopied] = useState(false);
   const [noReport, setNoReport] = useState(false);
+  const [expiredReport, setExpiredReport] = useState(false);
 
   useEffect(() => {
     // Load answers from store first, then fallback to sessionStorage
     try {
+      // Detect expired report session (so we can show an expiration message)
+      try {
+        const raw = sessionStorage.getItem(REPORT_STORAGE_KEY);
+        if (raw) {
+          const payload = JSON.parse(raw);
+          if (payload && payload.timestamp && Date.now() - payload.timestamp > REPORT_TTL_MS) {
+            setExpiredReport(true);
+            try { sessionStorage.removeItem(REPORT_STORAGE_KEY); } catch {}
+          }
+        }
+      } catch {}
       const hasStoreAnswers = storeAnswers && Object.keys(storeAnswers).length > 0;
       let answersToScore: CheckerAnswers | null = null;
 
@@ -403,9 +415,13 @@ export default function Report() {
         <Navbar />
         <main className="flex items-center justify-center min-h-[60vh] px-4">
           <div className="max-w-xl text-center">
-            <h2 className="font-bold mb-4" style={{ color: "white", fontSize: "1.25rem" }}>No report found</h2>
+            <h2 className="font-bold mb-4" style={{ color: "white", fontSize: "1.25rem" }}>
+              {expiredReport ? "Report session expired" : "No report found"}
+            </h2>
             <p className="mb-6" style={{ color: "rgba(255,255,255,0.45)" }}>
-              No report found. Please run a new readiness check.
+              {expiredReport
+                ? "Your report session has expired. Please run a new readiness check."
+                : "No report found. Please run a new readiness check."}
             </p>
             <div className="flex justify-center gap-3">
               <Link
@@ -524,6 +540,7 @@ export default function Report() {
                 <button
                   onClick={() => {
                     reset();
+                    try { sessionStorage.removeItem(REPORT_STORAGE_KEY); } catch {}
                     window.location.href = "/checker";
                   }}
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-150"
