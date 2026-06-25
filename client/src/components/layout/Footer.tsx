@@ -134,7 +134,7 @@ export default function Footer() {
           style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
         >
           <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
-            © 2025 VibeDeploy. All rights reserved.
+            © 2026 VibeDeploy. All rights reserved.
           </p>
           <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
             Report results are based on self-reported answers and do not constitute a professional security audit.

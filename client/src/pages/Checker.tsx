@@ -6,8 +6,23 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { useCheckerStore } from "@/store/checkerStore";
 import { CATEGORIES } from "@/scoring/questions";
-import { encodeAnswers } from "@/scoring/engine";
-import type { Question, QuestionOption } from "@/scoring/types";
+import type { Question, QuestionOption, CheckerAnswers } from "@/scoring/types";
+
+// ─── Report Storage Utility ─────────────────────────────────────────────────────
+const REPORT_STORAGE_KEY = "vibedeploy:last-report";
+const REPORT_TTL_MS = 60 * 60 * 1000; // 60 minutes
+
+function saveReport(reportsAnswers: CheckerAnswers) {
+  const payload = {
+    answers: reportsAnswers,
+    timestamp: Date.now(),
+  };
+  try {
+    sessionStorage.setItem(REPORT_STORAGE_KEY, JSON.stringify(payload));
+  } catch {
+    // Ignore storage errors
+  }
+}
 import { ArrowLeft, ArrowRight, CheckCircle2, Shield } from "lucide-react";
 
 // ─── Progress Bar ─────────────────────────────────────────────────────────────
@@ -309,8 +324,9 @@ export default function Checker() {
 
   function handleSubmit() {
     complete();
-    const encoded = encodeAnswers(answers);
-    navigate(`/report?answers=${encoded}`);
+    // Save report to sessionStorage instead of URL for privacy
+    saveReport(answers);
+    navigate("/report");
   }
 
   const nextCategoryName = !isLastCategory

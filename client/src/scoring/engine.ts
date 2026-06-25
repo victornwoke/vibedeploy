@@ -264,21 +264,4 @@ function getQuestionRecommendation(
 /**
  * Encode answers to a URL-safe string for sharing
  */
-export function encodeAnswers(answers: CheckerAnswers): string {
-  try {
-    return btoa(JSON.stringify(answers));
-  } catch {
-    return "";
-  }
-}
-
-/**
- * Decode answers from a URL-safe string
- */
-export function decodeAnswers(encoded: string): CheckerAnswers | null {
-  try {
-    return JSON.parse(atob(encoded));
-  } catch {
-    return null;
-  }
-}
+// encode/decode helpers removed to prevent answer leakage via URL/query strings

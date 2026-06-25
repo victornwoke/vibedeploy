@@ -5,8 +5,28 @@ import { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { calculateScore, getRiskLabel, getRiskColour, getRiskIcon, getRiskSummary, decodeAnswers } from "@/scoring/engine";
-import type { ScoringResult, CategoryScore, RiskLevel, Finding } from "@/scoring/types";
+import { calculateScore, getRiskLabel, getRiskColour, getRiskIcon, getRiskSummary } from "@/scoring/engine";
+import type { ScoringResult, CategoryScore, RiskLevel, Finding, CheckerAnswers } from "@/scoring/types";
+
+// ─── Report Storage Utility ─────────────────────────────────────────────────────
+const REPORT_STORAGE_KEY = "vibedeploy:last-report";
+const REPORT_TTL_MS = 60 * 60 * 1000; // 60 minutes
+
+function loadReport(): CheckerAnswers | null {
+  try {
+    const stored = sessionStorage.getItem(REPORT_STORAGE_KEY);
+    if (!stored) return null;
+    const payload = JSON.parse(stored);
+    const now = Date.now();
+    if (now - payload.timestamp > REPORT_TTL_MS) {
+      sessionStorage.removeItem(REPORT_STORAGE_KEY);
+      return null;
+    }
+    return payload.answers;
+  } catch {
+    return null;
+  }
+}
 import { useCheckerStore } from "@/store/checkerStore";
 import {
   Share2,
@@ -337,27 +357,69 @@ export default function Report() {
   const { answers: storeAnswers, reset } = useCheckerStore();
   const [result, setResult] = useState<ScoringResult | null>(null);
   const [copied, setCopied] = useState(false);
+  const [noReport, setNoReport] = useState(false);
 
   useEffect(() => {
-    // Try to get answers from URL params first, then fall back to store
-    const searchParams = new URLSearchParams(window.location.search);
-    const encoded = searchParams.get("answers");
+    // Load answers from store first, then fallback to sessionStorage
+    try {
+      const hasStoreAnswers = storeAnswers && Object.keys(storeAnswers).length > 0;
+      let answersToScore: CheckerAnswers | null = null;
 
-    let answersToScore = storeAnswers;
-    if (encoded) {
-      const decoded = decodeAnswers(encoded);
-      if (decoded) answersToScore = decoded;
+      if (hasStoreAnswers) {
+        answersToScore = storeAnswers;
+      } else {
+        // sessionStorage fallback (private, short-lived)
+        const loaded = loadReport();
+        if (loaded && Object.keys(loaded).length > 0) answersToScore = loaded;
+      }
+
+      if (!answersToScore) {
+        setNoReport(true);
+        setResult(null);
+        return;
+      }
+
+      const scoring = calculateScore(answersToScore);
+      setResult(scoring);
+      setNoReport(false);
+    } catch (err) {
+      setNoReport(true);
+      setResult(null);
     }
-
-    const scoring = calculateScore(answersToScore);
-    setResult(scoring);
-  }, [location]);
+  }, [location, storeAnswers]);
 
   function handleShare() {
-    navigator.clipboard.writeText(window.location.href).then(() => {
+    if (!result) return;
+    const summary = `VibeDeploy Readiness Summary — Score: ${result.totalScore}/100 · ${getRiskLabel(result.overallRisk)}\n${getRiskSummary(result.overallRisk, result.totalScore)}\n\nThis report is generated from the answers submitted in this session. VibeDeploy does not automatically scan your repository in this MVP.`;
+    navigator.clipboard.writeText(summary).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
+  }
+
+  if (noReport) {
+    return (
+      <div style={{ backgroundColor: "#0F0F1A", minHeight: "100vh" }}>
+        <Navbar />
+        <main className="flex items-center justify-center min-h-[60vh] px-4">
+          <div className="max-w-xl text-center">
+            <h2 className="font-bold mb-4" style={{ color: "white", fontSize: "1.25rem" }}>No report found</h2>
+            <p className="mb-6" style={{ color: "rgba(255,255,255,0.45)" }}>
+              No report found. Please run a new readiness check.
+            </p>
+            <div className="flex justify-center gap-3">
+              <Link
+                href="/checker"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg btn-primary"
+              >
+                Start Checker
+              </Link>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
   }
 
   if (!result) {
@@ -367,6 +429,7 @@ export default function Report() {
         <div className="flex items-center justify-center min-h-[60vh]">
           <p style={{ color: "rgba(255,255,255,0.4)" }}>Calculating your score...</p>
         </div>
+        <Footer />
       </div>
     );
   }
@@ -453,10 +516,10 @@ export default function Report() {
                     border: "1px solid rgba(255,255,255,0.1)",
                     color: "rgba(255,255,255,0.7)",
                   }}
-                  aria-label="Copy report URL to clipboard"
+                  aria-label="Copy report summary to clipboard"
                 >
                   <Share2 size={14} />
-                  {copied ? "Copied!" : "Share Report"}
+                  {copied ? "Copied!" : "Copy Summary"}
                 </button>
                 <button
                   onClick={() => {
