@@ -69,6 +69,7 @@ npx -y pnpm@10.26.0 run build
 
 - Build a static production package with Vite
 - Serve using a dedicated static host or the Express static server in `server/index.ts`
+- For deployment header guidance, see `docs/deployment.md`
 - Do not use `vite preview` as a production-grade server
 - Keep production credentials out of the repo
 

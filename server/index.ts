@@ -1,4 +1,5 @@
 import express from "express";
+import helmet from "helmet";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -9,6 +10,44 @@ const __dirname = path.dirname(__filename);
 async function startServer() {
   const app = express();
   const server = createServer(app);
+
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: ["'self'"],
+          scriptSrc: ["'self'"],
+          styleSrc: ["'self'", "'unsafe-inline'"],
+          imgSrc: ["'self'", "data:"],
+          connectSrc: ["'self'"],
+          fontSrc: ["'self'"],
+          objectSrc: ["'none'"],
+          baseUri: ["'self'"],
+          frameAncestors: ["'none'"],
+          formAction: ["'self'"],
+          upgradeInsecureRequests: [],
+        },
+      },
+      hsts:
+        process.env.NODE_ENV === "production"
+          ? {
+              maxAge: 31536000,
+              includeSubDomains: true,
+              preload: false,
+            }
+          : false,
+      referrerPolicy: { policy: "strict-origin-when-cross-origin" },
+      frameguard: { action: "deny" },
+    })
+  );
+
+  app.use((req, res, next) => {
+    res.setHeader(
+      "Permissions-Policy",
+      "fullscreen=(), payment=(), camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    );
+    next();
+  });
 
   // Serve static files from dist/public in production
   const staticPath =
