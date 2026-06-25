@@ -74,7 +74,7 @@ function CategoryStep() {
 
       {/* Questions */}
       <div className="space-y-6">
-        {category.questions.map((question, qi) => {
+        {category.questions.map((question: Question, qi: number) => {
           const currentAnswer = categoryAnswers[question.id];
           return (
             <div
@@ -101,7 +101,7 @@ function CategoryStep() {
                 role="radiogroup"
                 aria-labelledby={`question-${question.id}`}
               >
-                {question.options.map((option) => {
+                {question.options.map((option: QuestionOption) => {
                   const isSelected = currentAnswer === option.value;
                   return (
                     <button

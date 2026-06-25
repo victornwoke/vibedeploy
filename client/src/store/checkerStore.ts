@@ -3,7 +3,7 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { CheckerAnswers } from "../scoring/types";
+import type { CheckerAnswers, Question } from "../scoring/types";
 import { CATEGORIES } from "../scoring/questions";
 
 interface CheckerState {
