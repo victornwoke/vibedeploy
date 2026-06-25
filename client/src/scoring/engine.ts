@@ -154,12 +154,13 @@ export function calculateScore(answers: CheckerAnswers): ScoringResult {
   const totalScore = Math.round(weightedTotal * 100);
   const overallRisk = getRiskLevel(totalScore);
 
-  // Collect top recommendations from worst categories
-  const topRecommendations = categoryScores
-    .filter((c) => c.upsell)
-    .sort((a, b) => a.score - b.score)
-    .slice(0, 3)
-    .map((c) => c.upsell);
+// Collect top recommendations from worst categories
+   const topRecommendations: string[] = categoryScores
+     .filter((c) => c.upsell)
+     .sort((a, b) => a.score - b.score)
+     .slice(0, 3)
+     .map((c) => c.upsell!)
+     .filter((u): u is string => Boolean(u));
 
   // Suggest the most relevant service
   const suggestedService = getSuggestedService(totalScore, criticalCount, categoryScores);
@@ -168,6 +169,7 @@ export function calculateScore(answers: CheckerAnswers): ScoringResult {
     totalScore,
     overallRisk,
     categories: categoryScores,
+    categoryScores,
     criticalCount,
     highCount,
     topRecommendations,
@@ -206,7 +208,7 @@ function getSuggestedService(
 function getQuestionRecommendation(
   categoryId: string,
   questionId: string,
-  answer: string | boolean | null
+  answer: string | null
 ): string {
   const recommendations: Record<string, string> = {
     "cicd_automated_build": "Set up a basic CI pipeline using GitHub Actions. Even a simple build-and-test workflow catches regressions before they reach production.",
