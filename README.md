@@ -51,6 +51,14 @@ npx -y pnpm@10.26.0 run build
 npx -y pnpm@10.26.0 audit --audit-level=low
 ```
 
+## CI checks
+
+Every pull request should pass:
+
+- TypeScript check
+- production build
+- dependency audit
+
 ## Build
 
 ```bash
