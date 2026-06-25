@@ -487,8 +487,8 @@ export default function Report() {
             </h2>
             <div className="space-y-3">
               {result.categories
-                .sort((a, b) => a.score - b.score)
-                .map((cat) => (
+                .sort((a: CategoryScore, b: CategoryScore) => a.score - b.score)
+                .map((cat: CategoryScore) => (
                   <CategoryAccordion key={cat.id} category={cat} />
                 ))}
             </div>

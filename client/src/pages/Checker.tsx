@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import { useCheckerStore } from "@/store/checkerStore";
 import { CATEGORIES } from "@/scoring/questions";
 import { encodeAnswers } from "@/scoring/engine";
+import type { Question, QuestionOption } from "@/scoring/types";
 import { ArrowLeft, ArrowRight, CheckCircle2, Shield } from "lucide-react";
 
 // ─── Progress Bar ─────────────────────────────────────────────────────────────
