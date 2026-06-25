@@ -6,7 +6,7 @@ import { Link, useLocation } from "wouter";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { calculateScore, getRiskLabel, getRiskColour, getRiskIcon, getRiskSummary, decodeAnswers } from "@/scoring/engine";
-import type { ScoringResult, CategoryScore, RiskLevel } from "@/scoring/types";
+import type { ScoringResult, CategoryScore, RiskLevel, Finding } from "@/scoring/types";
 import { useCheckerStore } from "@/store/checkerStore";
 import {
   Share2,
