@@ -228,7 +228,7 @@ function CategoryAccordion({ category }: { category: CategoryScore }) {
             </div>
           ) : (
             <div className="space-y-4 pt-4">
-              {category.findings.map((finding) => (
+              {category.findings.map((finding: Finding) => (
                 <div
                   key={finding.questionId}
                   className="p-4 rounded-lg"
