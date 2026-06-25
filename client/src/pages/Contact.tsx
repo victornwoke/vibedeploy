@@ -2,6 +2,7 @@
 // Design: Dark DevOps Command Centre
 
 import { useState } from "react";
+import { useForm } from "@formspree/react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Link } from "wouter";
@@ -27,7 +28,7 @@ const SERVICES_OPTIONS = [
 interface FormState {
   name: string;
   email: string;
-  service: string;
+  subject: string;
   appUrl: string;
   message: string;
 }
@@ -36,7 +37,7 @@ export default function Contact() {
   const [form, setForm] = useState<FormState>({
     name: "",
     email: "",
-    service: "",
+    subject: "",
     appUrl: "",
     message: "",
   });
@@ -48,16 +49,36 @@ export default function Contact() {
   }
 
   const mailtoBody = encodeURIComponent(
-    `Name: ${form.name}\nEmail: ${form.email}\nService: ${form.service}\nApp URL: ${form.appUrl}\n\nMessage:\n${form.message}`
+    `Name: ${form.name}\nEmail: ${form.email}\nSubject: ${form.subject}\nApp URL: ${form.appUrl}\n\nMessage:\n${form.message}`
   );
   // Use the designated recipient for MVP static flow
   const RECIPIENT_EMAIL = "victornwoke147@outlook.com";
   const mailtoLink = `mailto:${RECIPIENT_EMAIL}?subject=VibeDeploy%20Enquiry&body=${mailtoBody}`;
 
-  function handleSubmit(e: React.FormEvent) {
+  // Formspree integration: read public form ID or full endpoint from environment
+  const rawFormspree = import.meta.env.VITE_FORMSPREE_CONTACT_FORM_ID as string | undefined;
+  // Accept either 'xojoebyg' or full 'https://formspree.io/f/xojoebyg'
+  const formspreeId = rawFormspree
+    ? rawFormspree.includes("/f/")
+      ? rawFormspree.split("/f/").pop() || rawFormspree
+      : rawFormspree
+    : undefined;
+
+  // Always call the hook with a string - pass empty string if missing
+  const [state, formspreeSubmit] = useForm(formspreeId ?? "");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // Opens user's email client with prefilled message - no backend
-    window.location.href = mailtoLink;
+
+    // If Formspree ID not configured, fallback to mailto behaviour
+    if (!formspreeId) {
+      window.location.href = mailtoLink;
+      return;
+    }
+
+    // Submit to Formspree using the hook-provided submit handler
+    // The hook expects the React form event to be forwarded
+    await formspreeSubmit(e as unknown as React.FormEvent<HTMLFormElement>);
   }
 
   return (
@@ -156,23 +177,23 @@ export default function Contact() {
                       Service Interested In *
                     </label>
                     <select
-                      id="service"
-                      name="service"
+                      id="subject"
+                      name="subject"
                       required
-                      value={form.service}
+                      value={form.subject}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED] appearance-none"
                       style={{
                         background: "rgba(255,255,255,0.06)",
                         border: "1px solid rgba(255,255,255,0.1)",
-                        color: form.service ? "white" : "rgba(255,255,255,0.35)",
+                        color: form.subject ? "white" : "rgba(255,255,255,0.35)",
                       }}
                     >
                       <option value="" disabled style={{ background: "#1E1B4B", color: "white" }}>
                         Select a service...
                       </option>
                       {SERVICES_OPTIONS.map((opt) => (
-                        <option key={opt.value} value={opt.value} style={{ background: "#1E1B4B", color: "white" }}>
+                        <option key={opt.value} value={opt.label} style={{ background: "#1E1B4B", color: "white" }}>
                           {opt.label}
                         </option>
                       ))}
@@ -233,7 +254,9 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    disabled={!form.name || !form.email || !form.service || !form.message}
+                    disabled={
+                      !form.name || !form.email || !form.subject || !form.message || !formspreeId
+                    }
                     className="w-full px-6 py-3.5 text-sm font-semibold text-white rounded-xl btn-primary disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     Send Message
@@ -241,8 +264,34 @@ export default function Contact() {
                   </button>
 
                   <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.3)" }}>
-                    This MVP uses your email client to send messages. No form data is stored by VibeDeploy. If your email app doesn't open, email me directly at <a href="mailto:victornwoke147@outlook.com" style={{ color: "#A855F7" }}>victornwoke147@outlook.com</a>.
+                    {formspreeId ? (
+                      "This form is submitted via Formspree. No form data is stored by VibeDeploy."
+                    ) : (
+                      <>
+                        Contact form is not connected yet. Please email me directly at{' '}
+                        <a href="mailto:victornwoke147@outlook.com" style={{ color: "#A855F7" }}>
+                          victornwoke147@outlook.com
+                        </a>
+                        .
+                      </>
+                    )}
                   </p>
+
+                  {state?.succeeded && (
+                    <p className="text-sm text-center" style={{ color: "#34D399" }}>
+                      Thanks — your message has been sent. I’ll get back to you as soon as possible.
+                    </p>
+                  )}
+
+                  {state?.errors ? (
+                    <p className="text-sm text-center" style={{ color: "#FB7185" }}>
+                      Something went wrong. Please email me directly at{' '}
+                      <a href="mailto:victornwoke147@outlook.com" style={{ color: "#A855F7" }}>
+                        victornwoke147@outlook.com
+                      </a>
+                      .
+                    </p>
+                  ) : null}
                 </form>
               </div>
 

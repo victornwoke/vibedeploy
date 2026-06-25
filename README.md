@@ -49,6 +49,14 @@ Run static checks, build, and audit:
 npx -y pnpm@10.26.0 run check
 npx -y pnpm@10.26.0 run build
 npx -y pnpm@10.26.0 audit --audit-level=low
+
+## Contact form setup
+
+1. Create a Formspree account at https://formspree.io/ and create a new form.
+2. Copy the Form ID provided by Formspree for your form.
+3. Add it to your local `.env` as `VITE_FORMSPREE_CONTACT_FORM_ID=<your_form_id>`.
+4. For production, add the same env variable in your hosting provider's dashboard.
+5. Never commit real `.env` files to the repository.
 ```
 
 ## CI checks
@@ -67,11 +75,15 @@ npx -y pnpm@10.26.0 run build
 
 ## Deployment notes
 
-- Build a static production package with Vite
-- Serve using a dedicated static host or the Express static server in `server/index.ts`
-- For deployment header guidance, see `docs/deployment.md`
-- Do not use `vite preview` as a production-grade server
+- Preferred v1 deployment: Azure Static Web Apps using the Vite static build output
+- Build output is written to `dist/public`
+- `staticwebapp.config.json` provides SPA fallback and global security
+  headers for Azure
+- The Express server in `server/index.ts` is optional for self-hosted or alternate
+  Node deployments
+- Avoid `vite preview` for production
 - Keep production credentials out of the repo
+- Supabase is not part of MVP; reserved for a later v2 architecture
 
 ## Security and privacy
 
@@ -83,7 +95,8 @@ npx -y pnpm@10.26.0 run build
 
 ## Documentation
 
-See the `docs/` folder for full product, design, architecture, scoring, roadmap, and go-to-market documentation.
+See the `docs/` folder for full product, design, architecture, scoring,
+roadmap, and go-to-market documentation.
 
 ## Contact
 
