@@ -8,7 +8,7 @@ Tagline: "AI can build the demo. VibeDeploy makes it production-ready."
 - Role: Cloud & DevOps Engineer
 - Portfolio: victornwoke.com
 - Product: vibedeploy.victornwoke.com
-- Version: 1.0 | June 2025
+- Version: 1.0 | June 2025.
 
 ## SECTION 1 -- PRODUCT REQUIREMENTS DOCUMENT
 
