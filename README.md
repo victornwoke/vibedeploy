@@ -4,6 +4,14 @@ A production readiness checker for early-stage web apps.
 
 VibeDeploy helps founders and builders validate deployment, security, monitoring, and operations readiness before launching a production app.
 
+## License and Usage
+
+VibeDeploy is proprietary software owned by Victor Nwoke. This public repository does not mean the project is open source.
+
+You may view the code for portfolio, demonstration, and review purposes only. Copying, reuse, modification, redistribution, deployment, commercialization, sublicensing, sale, or creation of derivative works is not allowed without prior written permission from Victor Nwoke.
+
+See [LICENSE](./LICENSE) for the full proprietary terms.
+
 ## Key properties
 
 - Browser-first React + TypeScript app
@@ -49,6 +57,7 @@ Run static checks, build, and audit:
 npx -y pnpm@10.26.0 run check
 npx -y pnpm@10.26.0 run build
 npx -y pnpm@10.26.0 audit --audit-level=low
+```
 
 ## Contact form setup
 
@@ -57,7 +66,6 @@ npx -y pnpm@10.26.0 audit --audit-level=low
 3. Add it to your local `.env` as `VITE_FORMSPREE_CONTACT_FORM_ID=<your_form_id>`.
 4. For production, add the same env variable in your hosting provider's dashboard.
 5. Never commit real `.env` files to the repository.
-```
 
 ## CI checks
 
@@ -101,3 +109,5 @@ roadmap, and go-to-market documentation.
 ## Contact
 
 Email: [victornwoke147@outlook.com](mailto:victornwoke147@outlook.com)
+
+Copyright © 2026 Victor Nwoke. All rights reserved.
