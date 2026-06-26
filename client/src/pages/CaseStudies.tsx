@@ -83,9 +83,9 @@ function ScoreChange({ before, after }: { before: number; after: number }) {
         >
           {before}
         </p>
-        <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>Before</p>
+        <p className="text-xs" style={{ color: "var(--vd-faint)" }}>Before</p>
       </div>
-      <ArrowRight size={16} style={{ color: "rgba(255,255,255,0.3)" }} />
+      <ArrowRight size={16} style={{ color: "var(--vd-faint)" }} />
       <div className="text-center">
         <p
           className="text-2xl font-black"
@@ -93,7 +93,7 @@ function ScoreChange({ before, after }: { before: number; after: number }) {
         >
           {after}
         </p>
-        <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>After</p>
+        <p className="text-xs" style={{ color: "var(--vd-faint)" }}>After</p>
       </div>
     </div>
   );
@@ -101,11 +101,11 @@ function ScoreChange({ before, after }: { before: number; after: number }) {
 
 export default function CaseStudies() {
   return (
-    <div style={{ backgroundColor: "#0F0F1A", minHeight: "100vh" }}>
+    <div style={{ backgroundColor: "var(--vd-bg)", minHeight: "100vh" }}>
       <Navbar />
       <main id="main-content">
         {/* Hero */}
-        <section className="py-16 md:py-20" style={{ backgroundColor: "#0F0F1A" }}>
+        <section className="py-16 md:py-20" style={{ backgroundColor: "var(--vd-bg)" }}>
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5 text-xs font-semibold tracking-widest uppercase"
@@ -119,34 +119,34 @@ export default function CaseStudies() {
             </div>
             <h1
               className="font-bold mb-4"
-              style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "white", maxWidth: "700px" }}
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "var(--vd-heading)", maxWidth: "700px" }}
             >
               Real gaps found in
               <br />
               <span className="gradient-text">real AI-generated apps.</span>
             </h1>
-            <p className="max-w-xl" style={{ color: "rgba(255,255,255,0.5)", fontSize: "1rem" }}>
+            <p className="max-w-xl" style={{ color: "var(--vd-muted)", fontSize: "1rem" }}>
               These are representative scenarios based on common patterns Victor has seen across AI-generated codebases. Details have been anonymised.
             </p>
           </div>
         </section>
 
         {/* Case studies */}
-        <section className="pb-20" style={{ backgroundColor: "#0F0F1A" }}>
+        <section className="pb-20" style={{ backgroundColor: "var(--vd-bg)" }}>
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             {CASE_STUDIES.map((cs) => (
               <article
                 key={cs.id}
                 className="rounded-2xl overflow-hidden"
                 style={{
-                  background: "rgba(30, 27, 75, 0.4)",
-                  border: "1px solid rgba(255,255,255,0.07)",
+                  background: "var(--vd-panel)",
+                  border: "1px solid var(--vd-border)",
                 }}
               >
                 {/* Header */}
                 <div
                   className="p-6 md:p-8"
-                  style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+                  style={{ borderBottom: "1px solid var(--vd-button-bg)" }}
                 >
                   <div className="flex flex-col md:flex-row md:items-start gap-6">
                     <div
@@ -167,14 +167,14 @@ export default function CaseStudies() {
                         >
                           {cs.tag}
                         </span>
-                        <span className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+                        <span className="text-xs" style={{ color: "var(--vd-faint)" }}>
                           {cs.service}
                         </span>
                       </div>
-                      <h2 className="font-bold mb-2" style={{ color: "white", fontSize: "1.125rem" }}>
+                      <h2 className="font-bold mb-2" style={{ color: "var(--vd-heading)", fontSize: "1.125rem" }}>
                         {cs.title}
                       </h2>
-                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
+                      <p className="text-sm leading-relaxed" style={{ color: "var(--vd-muted)" }}>
                         {cs.summary}
                       </p>
                     </div>
@@ -189,33 +189,33 @@ export default function CaseStudies() {
                   <div>
                     <p
                       className="text-xs font-semibold tracking-widest uppercase mb-2"
-                      style={{ color: "rgba(255,255,255,0.3)" }}
+                      style={{ color: "var(--vd-faint)" }}
                     >
                       The Problem
                     </p>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--vd-muted)" }}>
                       {cs.problem}
                     </p>
                   </div>
                   <div>
                     <p
                       className="text-xs font-semibold tracking-widest uppercase mb-2"
-                      style={{ color: "rgba(255,255,255,0.3)" }}
+                      style={{ color: "var(--vd-faint)" }}
                     >
                       The Solution
                     </p>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--vd-muted)" }}>
                       {cs.solution}
                     </p>
                   </div>
                   <div>
                     <p
                       className="text-xs font-semibold tracking-widest uppercase mb-2"
-                      style={{ color: "rgba(255,255,255,0.3)" }}
+                      style={{ color: "var(--vd-faint)" }}
                     >
                       The Outcome
                     </p>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--vd-muted)" }}>
                       {cs.outcome}
                     </p>
                   </div>
@@ -226,12 +226,12 @@ export default function CaseStudies() {
         </section>
 
         {/* CTA */}
-        <section className="py-16" style={{ backgroundColor: "#0a0a14" }}>
+        <section className="py-16" style={{ backgroundColor: "var(--vd-section)" }}>
           <div className="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-bold mb-4" style={{ color: "white", fontSize: "1.75rem" }}>
+            <h2 className="font-bold mb-4" style={{ color: "var(--vd-heading)", fontSize: "1.75rem" }}>
               Could your app have similar gaps?
             </h2>
-            <p className="mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>
+            <p className="mb-8" style={{ color: "var(--vd-muted)" }}>
               Most AI-generated apps score between 20 and 55 on first attempt. Find out where you stand in 5 minutes.
             </p>
             <Link

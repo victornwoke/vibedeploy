@@ -100,7 +100,7 @@ function ScoreGauge({ score, riskLevel }: { score: number; riskLevel: RiskLevel 
           <path
             d={describeArc(startAngle, endAngle)}
             fill="none"
-            stroke="rgba(255,255,255,0.08)"
+            stroke="var(--vd-border)"
             strokeWidth={strokeWidth}
             strokeLinecap="round"
           />
@@ -126,7 +126,7 @@ function ScoreGauge({ score, riskLevel }: { score: number; riskLevel: RiskLevel 
             x={cx}
             y={cy - 6}
             textAnchor="middle"
-            fill="white"
+            fill="var(--vd-heading)"
             fontSize="36"
             fontWeight="800"
             fontFamily="Inter, sans-serif"
@@ -137,7 +137,7 @@ function ScoreGauge({ score, riskLevel }: { score: number; riskLevel: RiskLevel 
             x={cx}
             y={cy + 16}
             textAnchor="middle"
-            fill="rgba(255,255,255,0.4)"
+            fill="var(--vd-faint)"
             fontSize="13"
             fontFamily="Inter, sans-serif"
           >
@@ -185,8 +185,8 @@ function CategoryAccordion({ category }: { category: CategoryScore }) {
     <div
       className="rounded-xl overflow-hidden"
       style={{
-        background: "rgba(30, 27, 75, 0.4)",
-        border: `1px solid ${open ? colour + "30" : "rgba(255,255,255,0.07)"}`,
+        background: "var(--vd-panel)",
+        border: `1px solid ${open ? colour + "30" : "var(--vd-border)"}`,
         transition: "border-color 0.2s ease",
       }}
     >
@@ -202,10 +202,10 @@ function CategoryAccordion({ category }: { category: CategoryScore }) {
             <RiskBadge level={category.riskLevel} size="sm" />
           </div>
           <div className="min-w-0">
-            <p className="font-semibold text-sm truncate" style={{ color: "white" }}>
+            <p className="font-semibold text-sm truncate" style={{ color: "var(--vd-heading)" }}>
               {category.label}
             </p>
-            <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.35)" }}>
+            <p className="text-xs mt-0.5" style={{ color: "var(--vd-faint)" }}>
               Score: {category.score}/100 · Weight: {Math.round(category.weight * 100)}%
             </p>
           </div>
@@ -214,7 +214,7 @@ function CategoryAccordion({ category }: { category: CategoryScore }) {
           {/* Mini score bar */}
           <div
             className="hidden sm:block w-24 h-1.5 rounded-full overflow-hidden"
-            style={{ background: "rgba(255,255,255,0.08)" }}
+            style={{ background: "var(--vd-border)" }}
             aria-hidden="true"
           >
             <div
@@ -226,9 +226,9 @@ function CategoryAccordion({ category }: { category: CategoryScore }) {
             />
           </div>
           {open ? (
-            <ChevronUp size={16} style={{ color: "rgba(255,255,255,0.4)" }} />
+            <ChevronUp size={16} style={{ color: "var(--vd-faint)" }} />
           ) : (
-            <ChevronDown size={16} style={{ color: "rgba(255,255,255,0.4)" }} />
+            <ChevronDown size={16} style={{ color: "var(--vd-faint)" }} />
           )}
         </div>
       </button>
@@ -237,7 +237,7 @@ function CategoryAccordion({ category }: { category: CategoryScore }) {
         <div
           id={`category-${category.id}`}
           className="px-5 pb-5"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+          style={{ borderTop: "1px solid var(--vd-button-bg)" }}
         >
           {category.findings.length === 0 ? (
             <div className="flex items-center gap-2 py-3">
@@ -253,14 +253,14 @@ function CategoryAccordion({ category }: { category: CategoryScore }) {
                   key={finding.questionId}
                   className="p-4 rounded-lg"
                   style={{
-                    background: "rgba(0,0,0,0.2)",
-                    border: "1px solid rgba(255,255,255,0.05)",
+                    background: "var(--vd-button-bg)",
+                    border: "1px solid var(--vd-button-bg)",
                   }}
                 >
-                  <p className="text-xs font-medium mb-1.5" style={{ color: "rgba(255,255,255,0.5)" }}>
+                  <p className="text-xs font-medium mb-1.5" style={{ color: "var(--vd-muted)" }}>
                     {finding.questionText}
                   </p>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.75)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--vd-text)" }}>
                     {finding.recommendation}
                   </p>
                 </div>
@@ -279,7 +279,7 @@ function CategoryAccordion({ category }: { category: CategoryScore }) {
             >
               <AlertTriangle size={14} style={{ color: "#A855F7", marginTop: "1px", flexShrink: 0 }} />
               <div>
-                <p className="text-xs leading-relaxed mb-2" style={{ color: "rgba(255,255,255,0.6)" }}>
+                <p className="text-xs leading-relaxed mb-2" style={{ color: "var(--vd-muted)" }}>
                   {category.upsell}
                 </p>
                 <Link
@@ -312,13 +312,13 @@ function BookingCTA({ result }: { result: ScoringResult }) {
       <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#A855F7" }}>
         Recommended Action
       </p>
-      <h3 className="font-bold mb-2" style={{ color: "white", fontSize: "1rem" }}>
+      <h3 className="font-bold mb-2" style={{ color: "var(--vd-heading)", fontSize: "1rem" }}>
         Get Victor to fix these issues
       </h3>
-      <p className="text-sm mb-1" style={{ color: "rgba(255,255,255,0.6)" }}>
+      <p className="text-sm mb-1" style={{ color: "var(--vd-muted)" }}>
         {result.suggestedService}
       </p>
-      <p className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.35)" }}>
+      <p className="text-xs mb-5" style={{ color: "var(--vd-faint)" }}>
         {result.overallRisk === "critical" || result.overallRisk === "high"
           ? "30-minute findings call included. Delivered within 48 hours."
           : "Personalised review of your specific gaps."}
@@ -334,16 +334,16 @@ function BookingCTA({ result }: { result: ScoringResult }) {
         href="/services"
         className="block w-full text-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors"
         style={{
-          background: "rgba(255,255,255,0.06)",
-          border: "1px solid rgba(255,255,255,0.1)",
-          color: "rgba(255,255,255,0.6)",
+          background: "var(--vd-button-bg)",
+          border: "1px solid var(--vd-border)",
+          color: "var(--vd-muted)",
         }}
       >
         View All Services
       </Link>
 
-      <div className="mt-5 pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-        <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)", lineHeight: "1.5" }}>
+      <div className="mt-5 pt-4" style={{ borderTop: "1px solid var(--vd-border)" }}>
+        <p className="text-xs" style={{ color: "var(--vd-faint)", lineHeight: "1.5" }}>
           Results are based on self-reported answers. Not a professional security audit.
         </p>
       </div>
@@ -411,14 +411,14 @@ export default function Report() {
 
   if (noReport) {
     return (
-      <div style={{ backgroundColor: "#0F0F1A", minHeight: "100vh" }}>
+      <div style={{ backgroundColor: "var(--vd-bg)", minHeight: "100vh" }}>
         <Navbar />
         <main className="flex items-center justify-center min-h-[60vh] px-4">
           <div className="max-w-xl text-center">
-            <h2 className="font-bold mb-4" style={{ color: "white", fontSize: "1.25rem" }}>
+            <h2 className="font-bold mb-4" style={{ color: "var(--vd-heading)", fontSize: "1.25rem" }}>
               {expiredReport ? "Report session expired" : "No report found"}
             </h2>
-            <p className="mb-6" style={{ color: "rgba(255,255,255,0.45)" }}>
+            <p className="mb-6" style={{ color: "var(--vd-muted)" }}>
               {expiredReport
                 ? "Your report session has expired. Please run a new readiness check."
                 : "No report found. Please run a new readiness check."}
@@ -440,10 +440,10 @@ export default function Report() {
 
   if (!result) {
     return (
-      <div style={{ backgroundColor: "#0F0F1A", minHeight: "100vh" }}>
+      <div style={{ backgroundColor: "var(--vd-bg)", minHeight: "100vh" }}>
         <Navbar />
         <div className="flex items-center justify-center min-h-[60vh]">
-          <p style={{ color: "rgba(255,255,255,0.4)" }}>Calculating your score...</p>
+          <p style={{ color: "var(--vd-faint)" }}>Calculating your score...</p>
         </div>
         <Footer />
       </div>
@@ -453,14 +453,14 @@ export default function Report() {
   const summaryMessage = getRiskSummary(result.overallRisk, result.totalScore);
 
   return (
-    <div style={{ backgroundColor: "#0F0F1A", minHeight: "100vh" }}>
+    <div style={{ backgroundColor: "var(--vd-bg)", minHeight: "100vh" }}>
       <Navbar />
       <main id="main-content" className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Score header */}
         <div
           className="rounded-2xl p-8 mb-8"
           style={{
-            background: "rgba(30, 27, 75, 0.5)",
+            background: "var(--vd-panel)",
             border: "1px solid rgba(124, 58, 237, 0.2)",
           }}
         >
@@ -475,7 +475,7 @@ export default function Report() {
               <div className="mb-3">
                 <RiskBadge level={result.overallRisk} size="lg" />
               </div>
-              <h1 className="font-bold mb-3" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "white" }}>
+              <h1 className="font-bold mb-3" style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "var(--vd-heading)" }}>
                 {result.overallRisk === "pass"
                   ? "Strong production posture. Well done."
                   : result.overallRisk === "critical"
@@ -486,7 +486,7 @@ export default function Report() {
                   ? "Some gaps exist, launch with caution."
                   : "Good posture with minor gaps."}
               </h1>
-              <p className="mb-5 leading-relaxed" style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.9375rem" }}>
+              <p className="mb-5 leading-relaxed" style={{ color: "var(--vd-muted)", fontSize: "0.9375rem" }}>
                 {summaryMessage}
               </p>
 
@@ -497,7 +497,7 @@ export default function Report() {
                     <p className="text-2xl font-black" style={{ color: "#EF4444" }}>
                       {result.criticalCount}
                     </p>
-                    <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
+                    <p className="text-xs" style={{ color: "var(--vd-faint)" }}>
                       Critical {result.criticalCount === 1 ? "Category" : "Categories"}
                     </p>
                   </div>
@@ -507,16 +507,16 @@ export default function Report() {
                     <p className="text-2xl font-black" style={{ color: "#F59E0B" }}>
                       {result.highCount}
                     </p>
-                    <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
+                    <p className="text-xs" style={{ color: "var(--vd-faint)" }}>
                       High Risk {result.highCount === 1 ? "Category" : "Categories"}
                     </p>
                   </div>
                 )}
                 <div className="text-center">
-                  <p className="text-2xl font-black" style={{ color: "white" }}>
+                  <p className="text-2xl font-black" style={{ color: "var(--vd-heading)" }}>
                     {result.categories.length}
                   </p>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
+                  <p className="text-xs" style={{ color: "var(--vd-faint)" }}>
                     Categories Assessed
                   </p>
                 </div>
@@ -528,9 +528,9 @@ export default function Report() {
                   onClick={handleShare}
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-150"
                   style={{
-                    background: "rgba(255,255,255,0.06)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    color: "rgba(255,255,255,0.7)",
+                    background: "var(--vd-button-bg)",
+                    border: "1px solid var(--vd-border)",
+                    color: "var(--vd-text)",
                   }}
                   aria-label="Copy report summary to clipboard"
                 >
@@ -545,9 +545,9 @@ export default function Report() {
                   }}
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-150"
                   style={{
-                    background: "rgba(255,255,255,0.06)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    color: "rgba(255,255,255,0.7)",
+                    background: "var(--vd-button-bg)",
+                    border: "1px solid var(--vd-border)",
+                    color: "var(--vd-text)",
                   }}
                 >
                   <RefreshCw size={14} />
@@ -562,7 +562,7 @@ export default function Report() {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Category breakdown */}
           <div className="flex-1 min-w-0">
-            <h2 className="font-bold mb-4" style={{ color: "white", fontSize: "1.125rem" }}>
+            <h2 className="font-bold mb-4" style={{ color: "var(--vd-heading)", fontSize: "1.125rem" }}>
               Category Breakdown
             </h2>
             <div className="space-y-3">
@@ -577,12 +577,12 @@ export default function Report() {
             <div
               className="mt-8 p-4 rounded-xl flex items-start gap-3"
               style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.06)",
+                background: "var(--vd-button-bg)",
+                border: "1px solid var(--vd-button-bg)",
               }}
             >
-              <AlertTriangle size={14} style={{ color: "rgba(255,255,255,0.3)", marginTop: "1px", flexShrink: 0 }} />
-              <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.35)" }}>
+              <AlertTriangle size={14} style={{ color: "var(--vd-faint)", marginTop: "1px", flexShrink: 0 }} />
+              <p className="text-xs leading-relaxed" style={{ color: "var(--vd-faint)" }}>
                 This report is based entirely on your self-reported answers and is intended as a starting point for identifying infrastructure gaps. It does not constitute a professional security audit and does not involve any access to your codebase, infrastructure, or repositories. For a thorough assessment, book a manual audit with Victor.
               </p>
             </div>
@@ -598,7 +598,7 @@ export default function Report() {
         <div
           className="lg:hidden fixed bottom-0 left-0 right-0 p-4 z-40"
           style={{
-            background: "rgba(15, 15, 26, 0.95)",
+            background: "rgba(var(--vd-bg-rgb), 0.95)",
             backdropFilter: "blur(20px)",
             borderTop: "1px solid rgba(124, 58, 237, 0.2)",
           }}

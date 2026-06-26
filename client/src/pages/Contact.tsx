@@ -82,11 +82,11 @@ export default function Contact() {
   }
 
   return (
-    <div style={{ backgroundColor: "#0F0F1A", minHeight: "100vh" }}>
+    <div style={{ backgroundColor: "var(--vd-bg)", minHeight: "100vh" }}>
       <Navbar />
       <main id="main-content">
         {/* Hero */}
-        <section className="py-16 md:py-20" style={{ backgroundColor: "#0F0F1A" }}>
+        <section className="py-16 md:py-20" style={{ backgroundColor: "var(--vd-bg)" }}>
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               {/* Left: form */}
@@ -103,11 +103,11 @@ export default function Contact() {
                 </div>
                 <h1
                   className="font-bold mb-3"
-                  style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", color: "white" }}
+                  style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", color: "var(--vd-heading)" }}
                 >
                   Let's get your app production-ready.
                 </h1>
-                <p className="mb-8 leading-relaxed" style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.9375rem" }}>
+                <p className="mb-8 leading-relaxed" style={{ color: "var(--vd-muted)", fontSize: "0.9375rem" }}>
                   Fill in the details below and click "Send Message" to open your email client with a prefilled message.
                   Victor will respond within 24 hours on business days.
                 </p>
@@ -119,7 +119,7 @@ export default function Contact() {
                       <label
                         htmlFor="name"
                         className="block text-xs font-semibold tracking-widest uppercase mb-1.5"
-                        style={{ color: "rgba(255,255,255,0.4)" }}
+                        style={{ color: "var(--vd-faint)" }}
                       >
                         Your Name *
                       </label>
@@ -133,9 +133,9 @@ export default function Contact() {
                         placeholder="Jane Smith"
                         className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
                         style={{
-                          background: "rgba(255,255,255,0.06)",
-                          border: "1px solid rgba(255,255,255,0.1)",
-                          color: "white",
+                          background: "var(--vd-button-bg)",
+                          border: "1px solid var(--vd-border)",
+                          color: "var(--vd-heading)",
                         }}
                         autoComplete="name"
                       />
@@ -144,7 +144,7 @@ export default function Contact() {
                       <label
                         htmlFor="email"
                         className="block text-xs font-semibold tracking-widest uppercase mb-1.5"
-                        style={{ color: "rgba(255,255,255,0.4)" }}
+                        style={{ color: "var(--vd-faint)" }}
                       >
                         Email Address *
                       </label>
@@ -158,9 +158,9 @@ export default function Contact() {
                         placeholder="jane@company.com"
                         className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
                         style={{
-                          background: "rgba(255,255,255,0.06)",
-                          border: "1px solid rgba(255,255,255,0.1)",
-                          color: "white",
+                          background: "var(--vd-button-bg)",
+                          border: "1px solid var(--vd-border)",
+                          color: "var(--vd-heading)",
                         }}
                         autoComplete="email"
                       />
@@ -172,7 +172,7 @@ export default function Contact() {
                     <label
                       htmlFor="service"
                       className="block text-xs font-semibold tracking-widest uppercase mb-1.5"
-                      style={{ color: "rgba(255,255,255,0.4)" }}
+                      style={{ color: "var(--vd-faint)" }}
                     >
                       Service Interested In *
                     </label>
@@ -184,16 +184,16 @@ export default function Contact() {
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED] appearance-none"
                       style={{
-                        background: "rgba(255,255,255,0.06)",
-                        border: "1px solid rgba(255,255,255,0.1)",
-                        color: form.subject ? "white" : "rgba(255,255,255,0.35)",
+                        background: "var(--vd-button-bg)",
+                        border: "1px solid var(--vd-border)",
+                        color: form.subject ? "var(--vd-heading)" : "var(--vd-faint)",
                       }}
                     >
-                      <option value="" disabled style={{ background: "#1E1B4B", color: "white" }}>
+                      <option value="" disabled style={{ background: "#1E1B4B", color: "var(--vd-heading)" }}>
                         Select a service...
                       </option>
                       {SERVICES_OPTIONS.map((opt) => (
-                        <option key={opt.value} value={opt.label} style={{ background: "#1E1B4B", color: "white" }}>
+                        <option key={opt.value} value={opt.label} style={{ background: "#1E1B4B", color: "var(--vd-heading)" }}>
                           {opt.label}
                         </option>
                       ))}
@@ -205,7 +205,7 @@ export default function Contact() {
                     <label
                       htmlFor="appUrl"
                       className="block text-xs font-semibold tracking-widest uppercase mb-1.5"
-                      style={{ color: "rgba(255,255,255,0.4)" }}
+                      style={{ color: "var(--vd-faint)" }}
                     >
                       Your App URL (Optional)
                     </label>
@@ -218,9 +218,9 @@ export default function Contact() {
                       placeholder="https://myapp.com"
                       className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
                       style={{
-                        background: "rgba(255,255,255,0.06)",
-                        border: "1px solid rgba(255,255,255,0.1)",
-                        color: "white",
+                        background: "var(--vd-button-bg)",
+                        border: "1px solid var(--vd-border)",
+                        color: "var(--vd-heading)",
                       }}
                       autoComplete="url"
                     />
@@ -231,7 +231,7 @@ export default function Contact() {
                     <label
                       htmlFor="message"
                       className="block text-xs font-semibold tracking-widest uppercase mb-1.5"
-                      style={{ color: "rgba(255,255,255,0.4)" }}
+                      style={{ color: "var(--vd-faint)" }}
                     >
                       Tell Victor About Your App *
                     </label>
@@ -245,9 +245,9 @@ export default function Contact() {
                       placeholder="What did you build? What AI tool did you use? What are you most worried about?"
                       className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED] resize-none"
                       style={{
-                        background: "rgba(255,255,255,0.06)",
-                        border: "1px solid rgba(255,255,255,0.1)",
-                        color: "white",
+                        background: "var(--vd-button-bg)",
+                        border: "1px solid var(--vd-border)",
+                        color: "var(--vd-heading)",
                       }}
                     />
                   </div>
@@ -263,7 +263,7 @@ export default function Contact() {
                     <ArrowRight size={15} className="inline ml-2" />
                   </button>
 
-                  <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.3)" }}>
+                  <p className="text-xs text-center" style={{ color: "var(--vd-faint)" }}>
                     {formspreeId ? (
                       "This form is submitted via Formspree. No form data is stored by VibeDeploy."
                     ) : (
@@ -301,23 +301,23 @@ export default function Contact() {
                 <div
                   className="p-6 rounded-2xl"
                   style={{
-                    background: "rgba(30, 27, 75, 0.4)",
-                    border: "1px solid rgba(255,255,255,0.07)",
+                    background: "var(--vd-panel)",
+                    border: "1px solid var(--vd-border)",
                   }}
                 >
-                  <h2 className="font-bold mb-4" style={{ color: "white", fontSize: "1rem" }}>
+                  <h2 className="font-bold mb-4" style={{ color: "var(--vd-heading)", fontSize: "1rem" }}>
                     Or reach out directly
                   </h2>
                   <div className="space-y-3">
-                    <p className="text-sm mb-2" style={{ color: "rgba(255,255,255,0.6)" }}>
+                    <p className="text-sm mb-2" style={{ color: "var(--vd-muted)" }}>
                       For audits, deployment support, or DevSecOps help, email me directly:
                     </p>
                     <a
                       href="mailto:victornwoke147@outlook.com"
                       className="flex items-center gap-3 text-sm transition-colors group"
-                      style={{ color: "rgba(255,255,255,0.6)" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+                      style={{ color: "var(--vd-muted)" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "var(--vd-heading)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "var(--vd-muted)")}
                     >
                       <Mail size={15} style={{ color: "#A855F7" }} />
                       victornwoke147@outlook.com
@@ -327,9 +327,9 @@ export default function Contact() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-3 text-sm transition-colors"
-                      style={{ color: "rgba(255,255,255,0.6)" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+                      style={{ color: "var(--vd-muted)" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "var(--vd-heading)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "var(--vd-muted)")}
                     >
                       <Linkedin size={15} style={{ color: "#A855F7" }} />
                       linkedin.com/in/victornwoke
@@ -340,9 +340,9 @@ export default function Contact() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-3 text-sm transition-colors"
-                      style={{ color: "rgba(255,255,255,0.6)" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+                      style={{ color: "var(--vd-muted)" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "var(--vd-heading)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "var(--vd-muted)")}
                     >
                       <Github size={15} style={{ color: "#A855F7" }} />
                       github.com/victornwoke
@@ -361,10 +361,10 @@ export default function Contact() {
                 >
                   <Clock size={16} style={{ color: "#06B6D4", marginTop: "1px", flexShrink: 0 }} />
                   <div>
-                    <p className="text-sm font-semibold mb-1" style={{ color: "rgba(255,255,255,0.85)" }}>
+                    <p className="text-sm font-semibold mb-1" style={{ color: "var(--vd-text)" }}>
                       Response within 24 hours
                     </p>
-                    <p className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
+                    <p className="text-sm" style={{ color: "var(--vd-muted)" }}>
                       Victor responds to all enquiries on business days. For urgent issues, mention it in your message.
                     </p>
                   </div>
@@ -380,10 +380,10 @@ export default function Contact() {
                 >
                   <Shield size={16} style={{ color: "#10B981", marginTop: "1px", flexShrink: 0 }} />
                   <div>
-                    <p className="text-sm font-semibold mb-1" style={{ color: "rgba(255,255,255,0.85)" }}>
+                    <p className="text-sm font-semibold mb-1" style={{ color: "var(--vd-text)" }}>
                       No GitHub access required
                     </p>
-                    <p className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
+                    <p className="text-sm" style={{ color: "var(--vd-muted)" }}>
                       Victor will never ask for credentials or repository access without your explicit consent. All work is agreed in advance.
                     </p>
                   </div>
@@ -400,10 +400,10 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <MessageSquare size={16} style={{ color: "#A855F7", marginTop: "1px", flexShrink: 0 }} />
                     <div>
-                      <p className="text-sm font-semibold mb-1" style={{ color: "rgba(255,255,255,0.85)" }}>
+                      <p className="text-sm font-semibold mb-1" style={{ color: "var(--vd-text)" }}>
                         Haven't taken the checker yet?
                       </p>
-                      <p className="text-sm mb-3" style={{ color: "rgba(255,255,255,0.45)" }}>
+                      <p className="text-sm mb-3" style={{ color: "var(--vd-muted)" }}>
                         Take the free 5-minute assessment first. Your score report will help Victor understand your specific gaps before your first call.
                       </p>
                       <Link

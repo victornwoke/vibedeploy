@@ -15,7 +15,7 @@ const PRODUCT_LINKS = [
 export default function Footer() {
   return (
     <footer
-      style={{ backgroundColor: "#080810", borderTop: "1px solid rgba(255,255,255,0.06)" }}
+      style={{ backgroundColor: "var(--vd-footer-bg)", borderTop: "1px solid var(--vd-border)" }}
       role="contentinfo"
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -30,10 +30,10 @@ export default function Footer() {
               />
               <span className="font-bold text-base tracking-tight">
                 <span className="gradient-text">Vibe</span>
-                <span className="text-white">Deploy</span>
+                <span className="text-[var(--vd-heading)]">Deploy</span>
               </span>
             </Link>
-            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.875rem", lineHeight: "1.6" }}>
+            <p style={{ color: "var(--vd-muted)", fontSize: "0.875rem", lineHeight: "1.6" }}>
               Production readiness for the AI app era.
             </p>
             <div className="flex items-center gap-3 pt-1">
@@ -42,9 +42,9 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-md transition-colors"
-                style={{ color: "rgba(255,255,255,0.4)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+                style={{ color: "var(--vd-faint)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--vd-heading)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--vd-faint)")}
                 aria-label="Victor Nwoke on GitHub"
               >
                 <Github size={16} />
@@ -54,9 +54,9 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-md transition-colors"
-                style={{ color: "rgba(255,255,255,0.4)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+                style={{ color: "var(--vd-faint)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--vd-heading)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--vd-faint)")}
                 aria-label="Victor Nwoke on LinkedIn"
               >
                 <Linkedin size={16} />
@@ -68,7 +68,7 @@ export default function Footer() {
           <div>
             <h3
               className="text-xs font-semibold tracking-widest uppercase mb-4"
-              style={{ color: "rgba(255,255,255,0.3)" }}
+              style={{ color: "var(--vd-faint)" }}
             >
               Product
             </h3>
@@ -78,9 +78,9 @@ export default function Footer() {
                   <Link
                     href={link.href}
                     className="text-sm transition-colors"
-                    style={{ color: "rgba(255,255,255,0.5)" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}
+                    style={{ color: "var(--vd-muted)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--vd-heading)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--vd-muted)")}
                   >
                     {link.label}
                   </Link>
@@ -94,7 +94,7 @@ export default function Footer() {
             <div>
               <h3
                 className="text-xs font-semibold tracking-widest uppercase mb-4"
-                style={{ color: "rgba(255,255,255,0.3)" }}
+                style={{ color: "var(--vd-faint)" }}
               >
                 Built By
               </h3>
@@ -103,14 +103,14 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm transition-colors group"
-                style={{ color: "rgba(255,255,255,0.5)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}
+                style={{ color: "var(--vd-muted)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--vd-heading)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--vd-muted)")}
               >
                 <span>Victor Nwoke | Cloud & DevOps Engineer</span>
                 <ExternalLink size={12} className="opacity-60 group-hover:opacity-100 transition-opacity" />
               </a>
-              <p className="mt-2 text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+              <p className="mt-2 text-xs" style={{ color: "var(--vd-faint)" }}>
                 victornwoke.com
               </p>
             </div>
@@ -121,7 +121,7 @@ export default function Footer() {
               style={{ background: "rgba(16, 185, 129, 0.08)", border: "1px solid rgba(16, 185, 129, 0.2)" }}
             >
               <Shield size={14} style={{ color: "#10B981", marginTop: "1px", flexShrink: 0 }} />
-              <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)", lineHeight: "1.5" }}>
+              <p className="text-xs" style={{ color: "var(--vd-muted)", lineHeight: "1.5" }}>
                 No account required. No GitHub access needed. All scoring runs client-side.
               </p>
             </div>
@@ -131,12 +131,12 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           className="mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+          style={{ borderTop: "1px solid var(--vd-border)" }}
         >
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+          <p className="text-xs" style={{ color: "var(--vd-faint)" }}>
             © 2026 VibeDeploy. All rights reserved.
           </p>
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+          <p className="text-xs" style={{ color: "var(--vd-faint)" }}>
             Report results are based on self-reported answers and do not constitute a professional security audit.
           </p>
         </div>

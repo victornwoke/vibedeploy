@@ -3,7 +3,8 @@
 
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -17,6 +18,8 @@ export default function Navbar() {
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const nextTheme = theme === "dark" ? "light" : "dark";
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -50,7 +53,7 @@ export default function Navbar() {
               />
               <span className="font-bold text-lg tracking-tight">
                 <span className="gradient-text">Vibe</span>
-                <span className="text-white">Deploy</span>
+                <span className="text-[var(--vd-heading)]">Deploy</span>
               </span>
             </Link>
 
@@ -64,8 +67,8 @@ export default function Navbar() {
                     href={link.href}
                     className={`px-3 py-2 text-sm font-medium rounded-md transition-colors duration-150 relative ${
                       isActive
-                        ? "text-white"
-                        : "text-white/60 hover:text-white"
+                        ? "text-[var(--vd-heading)]"
+                        : "text-[var(--vd-muted)] hover:text-[var(--vd-heading)]"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >
@@ -85,14 +88,29 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 href="/checker"
-                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white rounded-lg btn-primary focus:outline-none focus:ring-2 focus:ring-[#7C3AED] focus:ring-offset-2 focus:ring-offset-[#0F0F1A]"
+                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white rounded-lg btn-primary focus:outline-none focus:ring-2 focus:ring-[#7C3AED] focus:ring-offset-2 focus:ring-offset-[var(--vd-bg)]"
               >
                 Check My App
               </Link>
 
               <button
+                type="button"
+                onClick={toggleTheme}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border transition-colors focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
+                style={{
+                  background: "var(--vd-button-bg)",
+                  borderColor: "var(--vd-border)",
+                  color: "var(--vd-heading)",
+                }}
+                aria-label={`Switch to ${nextTheme} mode`}
+                title={`Switch to ${nextTheme} mode`}
+              >
+                {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
+              </button>
+
+              <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="md:hidden p-2 text-white/70 hover:text-white transition-colors rounded-md focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
+                className="md:hidden p-2 text-[var(--vd-muted)] hover:text-[var(--vd-heading)] transition-colors rounded-md focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
                 aria-label={mobileOpen ? "Close menu" : "Open menu"}
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-menu"
@@ -107,7 +125,7 @@ export default function Navbar() {
         {mobileOpen && (
           <div
             id="mobile-menu"
-            className="md:hidden navbar-glass border-t border-white/10"
+            className="md:hidden navbar-glass border-t border-[var(--vd-border)]"
             role="navigation"
             aria-label="Mobile navigation"
           >
@@ -120,8 +138,8 @@ export default function Navbar() {
                     href={link.href}
                     className={`block px-3 py-2.5 text-sm font-medium rounded-md transition-colors ${
                       isActive
-                        ? "text-white bg-white/10"
-                        : "text-white/60 hover:text-white hover:bg-white/5"
+                        ? "text-[var(--vd-heading)] bg-[var(--vd-button-bg)]"
+                        : "text-[var(--vd-muted)] hover:text-[var(--vd-heading)] hover:bg-[var(--vd-button-bg)]"
                     }`}
                     aria-current={isActive ? "page" : undefined}
                   >
@@ -129,7 +147,7 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              <div className="pt-2 border-t border-white/10">
+              <div className="pt-2 border-t border-[var(--vd-border)]">
                 <Link
                   href="/checker"
                   className="block w-full text-center px-4 py-2.5 text-sm font-semibold text-white rounded-lg btn-primary"

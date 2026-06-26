@@ -29,7 +29,7 @@ function Hero() {
     <section
       className="relative min-h-[90vh] flex items-center overflow-hidden"
       style={{
-        background: "#0F0F1A",
+        background: "var(--vd-bg)",
       }}
     >
       {/* Background grid overlay */}
@@ -37,8 +37,7 @@ function Hero() {
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(to bottom, rgba(15,15,26,0.3) 0%, rgba(15,15,26,0.7) 60%, #0F0F1A 100%)",
+            background: "var(--vd-mesh-overlay)",
           }}
         />
         {/* Grid overlay */}
@@ -46,7 +45,7 @@ function Hero() {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px)",
+              "linear-gradient(var(--vd-grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--vd-grid-line) 1px, transparent 1px)",
             backgroundSize: "40px 40px",
           }}
         />
@@ -72,7 +71,7 @@ function Hero() {
             className="font-extrabold leading-tight mb-6"
             style={{ fontSize: "clamp(2.5rem, 5vw, 3.75rem)", lineHeight: 1.1 }}
           >
-            <span style={{ color: "white" }}>AI can build the demo.</span>
+            <span style={{ color: "var(--vd-heading)" }}>AI can build the demo.</span>
             <br />
             <span className="gradient-text">VibeDeploy makes it</span>
             <br />
@@ -84,7 +83,7 @@ function Hero() {
             className="mb-8 leading-relaxed"
             style={{
               fontSize: "1.125rem",
-              color: "rgba(255,255,255,0.65)",
+              color: "var(--vd-muted)",
               maxWidth: "580px",
             }}
           >
@@ -95,7 +94,7 @@ function Hero() {
           <div className="flex flex-col sm:flex-row gap-3 mb-6">
             <Link
               href="/checker"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white rounded-lg btn-primary focus:outline-none focus:ring-2 focus:ring-[#7C3AED] focus:ring-offset-2 focus:ring-offset-[#0F0F1A]"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white rounded-lg btn-primary focus:outline-none focus:ring-2 focus:ring-[#7C3AED] focus:ring-offset-2 focus:ring-offset-[var(--vd-bg)]"
             >
               Check My App Now! It's Free
               <ArrowRight size={16} />
@@ -104,15 +103,15 @@ function Hero() {
               href="/services"
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-medium rounded-lg transition-colors"
               style={{
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                color: "rgba(255,255,255,0.8)",
+                background: "var(--vd-button-bg)",
+                border: "1px solid var(--vd-border)",
+                color: "var(--vd-text)",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.1)";
+                (e.currentTarget as HTMLElement).style.background = "var(--vd-border)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.06)";
+                (e.currentTarget as HTMLElement).style.background = "var(--vd-button-bg)";
               }}
             >
               See How It Works
@@ -120,7 +119,7 @@ function Hero() {
           </div>
 
           {/* Trust line */}
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
+          <p className="text-xs" style={{ color: "var(--vd-faint)" }}>
             No account required. No GitHub access needed. Results in under 5 minutes.
           </p>
         </div>
@@ -133,7 +132,7 @@ function Hero() {
         <div
           className="w-80 rounded-xl overflow-hidden"
           style={{
-            background: "rgba(30, 27, 75, 0.7)",
+            background: "var(--vd-panel-strong)",
             backdropFilter: "blur(12px)",
             border: "1px solid rgba(124, 58, 237, 0.25)",
             boxShadow: "0 0 40px rgba(124, 58, 237, 0.15)",
@@ -147,7 +146,7 @@ function Hero() {
            />
           <div className="p-4">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: "rgba(255,255,255,0.4)" }}>
+              <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: "var(--vd-faint)" }}>
                 Sample Report
               </span>
               <span
@@ -157,10 +156,10 @@ function Hero() {
                 HIGH RISK
               </span>
             </div>
-            <div className="text-2xl font-bold" style={{ color: "white" }}>
-              47<span className="text-base font-normal" style={{ color: "rgba(255,255,255,0.4)" }}>/100</span>
+            <div className="text-2xl font-bold" style={{ color: "var(--vd-heading)" }}>
+              47<span className="text-base font-normal" style={{ color: "var(--vd-faint)" }}>/100</span>
             </div>
-            <p className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>
+            <p className="text-xs mt-1" style={{ color: "var(--vd-faint)" }}>
               3 critical gaps found
             </p>
           </div>
@@ -207,7 +206,7 @@ function ProblemSection() {
   return (
     <section
       className="py-20"
-      style={{ backgroundColor: "#0F0F1A" }}
+      style={{ backgroundColor: "var(--vd-bg)" }}
       aria-labelledby="problem-heading"
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -226,11 +225,11 @@ function ProblemSection() {
           <h2
             id="problem-heading"
             className="font-bold mb-4"
-            style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", color: "white" }}
+            style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", color: "var(--vd-heading)" }}
           >
             Most AI-generated apps are not production-ready.
             <br />
-            <span style={{ color: "rgba(255,255,255,0.5)" }}>Here's why that matters.</span>
+            <span style={{ color: "var(--vd-muted)" }}>Here's why that matters.</span>
           </h2>
         </div>
 
@@ -250,10 +249,10 @@ function ProblemSection() {
               >
                 <p.icon size={20} style={{ color: p.colour }} />
               </div>
-              <h3 className="font-semibold mb-2" style={{ color: "white", fontSize: "1.05rem" }}>
+              <h3 className="font-semibold mb-2" style={{ color: "var(--vd-heading)", fontSize: "1.05rem" }}>
                 {p.title}
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--vd-muted)" }}>
                 {p.description}
               </p>
             </div>
@@ -293,7 +292,7 @@ function HowItWorks() {
   return (
     <section
       className="py-20"
-      style={{ backgroundColor: "#0a0a14" }}
+      style={{ backgroundColor: "var(--vd-section)" }}
       aria-labelledby="how-heading"
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -301,11 +300,11 @@ function HowItWorks() {
           <h2
             id="how-heading"
             className="font-bold mb-3"
-            style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", color: "white" }}
+            style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", color: "var(--vd-heading)" }}
           >
             Three steps to knowing exactly where you stand.
           </h2>
-          <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "1rem" }}>
+          <p style={{ color: "var(--vd-muted)", fontSize: "1rem" }}>
             From zero to a full production readiness report in under 5 minutes.
           </p>
         </div>
@@ -323,7 +322,7 @@ function HowItWorks() {
               key={step.number}
               className="relative p-7 rounded-xl"
               style={{
-                background: "rgba(30, 27, 75, 0.4)",
+                background: "var(--vd-panel)",
                 border: "1px solid rgba(124, 58, 237, 0.15)",
                 animationDelay: `${i * 100}ms`,
               }}
@@ -348,10 +347,10 @@ function HowItWorks() {
               >
                 <step.icon size={18} style={{ color: "#A855F7" }} />
               </div>
-              <h3 className="font-semibold mb-2" style={{ color: "white", fontSize: "1.05rem" }}>
+              <h3 className="font-semibold mb-2" style={{ color: "var(--vd-heading)", fontSize: "1.05rem" }}>
                 {step.title}
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--vd-muted)" }}>
                 {step.description}
               </p>
             </div>
@@ -393,7 +392,7 @@ function CategoriesPreview() {
   return (
     <section
       className="py-20"
-      style={{ backgroundColor: "#0F0F1A" }}
+      style={{ backgroundColor: "var(--vd-bg)" }}
       aria-labelledby="categories-heading"
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -413,11 +412,11 @@ function CategoriesPreview() {
             <h2
               id="categories-heading"
               className="font-bold mb-4"
-              style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)", color: "white" }}
+              style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)", color: "var(--vd-heading)" }}
             >
               Every dimension of production readiness is scored.
             </h2>
-            <p className="mb-6 leading-relaxed" style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.9375rem" }}>
+            <p className="mb-6 leading-relaxed" style={{ color: "var(--vd-muted)", fontSize: "0.9375rem" }}>
               Our scoring model covers the 13 most critical DevOps categories, weighted by real-world impact. Most AI-generated apps score between 20 and 55 on first attempt.
             </p>
             <Link
@@ -438,16 +437,16 @@ function CategoriesPreview() {
                 key={cat.label}
                 className="p-3 rounded-lg flex items-center gap-2.5"
                 style={{
-                  background: "rgba(30, 27, 75, 0.5)",
-                  border: "1px solid rgba(255,255,255,0.07)",
+                  background: "var(--vd-panel)",
+                  border: "1px solid var(--vd-border)",
                 }}
               >
                 <cat.icon size={14} style={{ color: "#7C3AED", flexShrink: 0 }} />
                 <div className="min-w-0">
-                  <p className="text-xs font-medium leading-tight truncate" style={{ color: "rgba(255,255,255,0.8)" }}>
+                  <p className="text-xs font-medium leading-tight truncate" style={{ color: "var(--vd-text)" }}>
                     {cat.label}
                   </p>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+                  <p className="text-xs" style={{ color: "var(--vd-faint)" }}>
                     {cat.weight}
                   </p>
                 </div>
@@ -496,7 +495,7 @@ function ServicesPreview() {
   return (
     <section
       className="py-20"
-      style={{ backgroundColor: "#0a0a14" }}
+      style={{ backgroundColor: "var(--vd-section)" }}
       aria-labelledby="services-heading"
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -504,11 +503,11 @@ function ServicesPreview() {
           <h2
             id="services-heading"
             className="font-bold mb-3"
-            style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", color: "white" }}
+            style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", color: "var(--vd-heading)" }}
           >
             Four ways to go from risky to production-ready.
           </h2>
-          <p style={{ color: "rgba(255,255,255,0.45)" }}>
+          <p style={{ color: "var(--vd-muted)" }}>
             Start with the free checker, then choose the service that matches your needs.
           </p>
         </div>
@@ -521,10 +520,10 @@ function ServicesPreview() {
               style={{
                 background: s.highlight
                   ? "linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(37, 99, 235, 0.15))"
-                  : "rgba(30, 27, 75, 0.4)",
+                  : "var(--vd-panel)",
                 border: s.highlight
                   ? "1px solid rgba(124, 58, 237, 0.4)"
-                  : "1px solid rgba(255,255,255,0.07)",
+                  : "1px solid var(--vd-border)",
                 boxShadow: s.highlight ? "0 0 30px rgba(124, 58, 237, 0.15)" : "none",
               }}
             >
@@ -551,22 +550,22 @@ function ServicesPreview() {
               >
                 {s.price}
               </div>
-              <h3 className="font-semibold mb-2" style={{ color: "white", fontSize: "0.9375rem" }}>
+              <h3 className="font-semibold mb-2" style={{ color: "var(--vd-heading)", fontSize: "0.9375rem" }}>
                 {s.title}
               </h3>
-              <p className="text-sm leading-relaxed flex-1 mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <p className="text-sm leading-relaxed flex-1 mb-4" style={{ color: "var(--vd-muted)" }}>
                 {s.description}
               </p>
-              <p className="text-xs mb-4" style={{ color: "rgba(255,255,255,0.3)" }}>
+              <p className="text-xs mb-4" style={{ color: "var(--vd-faint)" }}>
                 Delivery: {s.delivery}
               </p>
               <Link
                 href="/services"
                 className="text-sm font-medium text-center py-2 rounded-lg transition-colors"
                 style={{
-                  background: s.highlight ? "rgba(124, 58, 237, 0.3)" : "rgba(255,255,255,0.06)",
-                  color: s.highlight ? "#C084FC" : "rgba(255,255,255,0.6)",
-                  border: s.highlight ? "1px solid rgba(124, 58, 237, 0.4)" : "1px solid rgba(255,255,255,0.1)",
+                  background: s.highlight ? "rgba(124, 58, 237, 0.3)" : "var(--vd-button-bg)",
+                  color: s.highlight ? "#C084FC" : "var(--vd-muted)",
+                  border: s.highlight ? "1px solid rgba(124, 58, 237, 0.4)" : "1px solid var(--vd-border)",
                 }}
               >
                 Learn More
@@ -579,9 +578,9 @@ function ServicesPreview() {
           <Link
             href="/services"
             className="inline-flex items-center gap-2 text-sm font-medium"
-            style={{ color: "rgba(255,255,255,0.5)" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}
+            style={{ color: "var(--vd-muted)" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--vd-heading)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--vd-muted)")}
           >
             View full pricing and comparison table
             <ChevronRight size={14} />
@@ -597,14 +596,14 @@ function FounderProof() {
   return (
     <section
       className="py-20"
-      style={{ backgroundColor: "#0F0F1A" }}
+      style={{ backgroundColor: "var(--vd-bg)" }}
       aria-labelledby="founder-heading"
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className="rounded-2xl p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
           style={{
-            background: "rgba(30, 27, 75, 0.5)",
+            background: "var(--vd-panel)",
             border: "1px solid rgba(124, 58, 237, 0.2)",
           }}
         >
@@ -623,11 +622,11 @@ function FounderProof() {
             <h2
               id="founder-heading"
               className="font-bold mb-4"
-              style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", color: "white" }}
+              style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", color: "var(--vd-heading)" }}
             >
               Built by a Cloud & DevOps engineer who has seen what breaks in production.
             </h2>
-            <p className="mb-6 leading-relaxed" style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.9375rem" }}>
+            <p className="mb-6 leading-relaxed" style={{ color: "var(--vd-muted)", fontSize: "0.9375rem" }}>
               Victor Nwoke is a Cloud and DevOps engineer with experience building and maintaining infrastructure on Azure, AWS, and GCP. VibeDeploy was created because the gap between an AI-generated demo and a secure, production-ready application is real, consistent, and fixable with the right guidance.
             </p>
             <a
@@ -685,7 +684,7 @@ function FinalCTA() {
   return (
     <section
       className="py-20"
-      style={{ backgroundColor: "#0a0a14" }}
+      style={{ backgroundColor: "var(--vd-section)" }}
       aria-labelledby="cta-heading"
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -699,11 +698,11 @@ function FinalCTA() {
           <h2
             id="cta-heading"
             className="font-bold mb-4"
-            style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)", color: "white" }}
+            style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)", color: "var(--vd-heading)" }}
           >
             Ready to stop guessing?
           </h2>
-          <p className="mb-8" style={{ color: "rgba(255,255,255,0.55)", fontSize: "1rem" }}>
+          <p className="mb-8" style={{ color: "var(--vd-muted)", fontSize: "1rem" }}>
             Get your free production readiness score in 5 minutes. No account required.
           </p>
           <Link
@@ -713,7 +712,7 @@ function FinalCTA() {
             Check My App Now!  It's Free
             <ArrowRight size={16} />
           </Link>
-          <p className="mt-4 text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+          <p className="mt-4 text-xs" style={{ color: "var(--vd-faint)" }}>
             No account required. No GitHub access needed. Results in under 5 minutes.
           </p>
         </div>
@@ -725,7 +724,7 @@ function FinalCTA() {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Home() {
   return (
-    <div style={{ backgroundColor: "#0F0F1A", minHeight: "100vh" }}>
+    <div style={{ backgroundColor: "var(--vd-bg)", minHeight: "100vh" }}>
       <Navbar />
       <main id="main-content">
         <Hero />

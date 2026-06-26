@@ -32,7 +32,7 @@ function CheckerProgressBar({ current, total }: { current: number; total: number
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.4)" }}>
+        <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: "var(--vd-faint)" }}>
           Category {current + 1} of {total}
         </span>
         <span className="text-xs font-mono" style={{ color: "#06B6D4" }}>
@@ -41,7 +41,7 @@ function CheckerProgressBar({ current, total }: { current: number; total: number
       </div>
       <div
         className="h-1.5 rounded-full overflow-hidden"
-        style={{ background: "rgba(255,255,255,0.08)" }}
+        style={{ background: "var(--vd-border)" }}
         role="progressbar"
         aria-valuenow={pct}
         aria-valuemin={0}
@@ -80,10 +80,10 @@ function CategoryStep() {
         >
           Category {currentCategoryIndex + 1} of {totalCategories}
         </div>
-        <h1 className="font-bold mb-2" style={{ fontSize: "1.75rem", color: "white" }}>
+        <h1 className="font-bold mb-2" style={{ fontSize: "1.75rem", color: "var(--vd-heading)" }}>
           {category.label}
         </h1>
-        <p className="text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>
+        <p className="text-sm" style={{ color: "var(--vd-faint)" }}>
           Weight: {Math.round(category.weight * 100)}% of total score
         </p>
       </div>
@@ -97,16 +97,16 @@ function CategoryStep() {
               key={question.id}
               className="p-5 rounded-xl"
               style={{
-                background: "rgba(30, 27, 75, 0.4)",
-                border: "1px solid rgba(255,255,255,0.07)",
+                background: "var(--vd-panel)",
+                border: "1px solid var(--vd-border)",
               }}
             >
               <p
                 className="font-medium mb-4 leading-snug"
-                style={{ color: "rgba(255,255,255,0.9)", fontSize: "0.9375rem" }}
+                style={{ color: "var(--vd-text)", fontSize: "0.9375rem" }}
                 id={`question-${question.id}`}
               >
-                <span style={{ color: "rgba(255,255,255,0.3)", marginRight: "8px", fontFamily: "monospace", fontSize: "0.75rem" }}>
+                <span style={{ color: "var(--vd-faint)", marginRight: "8px", fontFamily: "monospace", fontSize: "0.75rem" }}>
                   Q{qi + 1}
                 </span>
                 {question.text}
@@ -129,11 +129,11 @@ function CategoryStep() {
                       style={{
                         background: isSelected
                           ? "rgba(124, 58, 237, 0.25)"
-                          : "rgba(255,255,255,0.05)",
+                          : "var(--vd-button-bg)",
                         border: isSelected
                           ? "1px solid rgba(124, 58, 237, 0.5)"
-                          : "1px solid rgba(255,255,255,0.1)",
-                        color: isSelected ? "#C084FC" : "rgba(255,255,255,0.6)",
+                          : "1px solid var(--vd-border)",
+                        color: isSelected ? "#C084FC" : "var(--vd-muted)",
                         transform: isSelected ? "scale(1.02)" : "scale(1)",
                       }}
                     >
@@ -170,10 +170,10 @@ function EmailStep() {
           <CheckCircle2 size={11} />
           Almost Done
         </div>
-        <h1 className="font-bold mb-2" style={{ fontSize: "1.75rem", color: "white" }}>
+        <h1 className="font-bold mb-2" style={{ fontSize: "1.75rem", color: "var(--vd-heading)" }}>
           Your report is ready.
         </h1>
-        <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
+        <p className="text-sm leading-relaxed" style={{ color: "var(--vd-muted)" }}>
           Click below to see your production readiness score. Optionally, leave your email to receive a copy of your full report.
         </p>
       </div>
@@ -181,14 +181,14 @@ function EmailStep() {
       <div
         className="p-6 rounded-xl mb-6"
         style={{
-          background: "rgba(30, 27, 75, 0.4)",
-          border: "1px solid rgba(255,255,255,0.07)",
+          background: "var(--vd-panel)",
+          border: "1px solid var(--vd-border)",
         }}
       >
         <label
           htmlFor="email-capture"
           className="block text-xs font-semibold tracking-widest uppercase mb-2"
-          style={{ color: "rgba(255,255,255,0.4)" }}
+          style={{ color: "var(--vd-faint)" }}
         >
           Want to receive your full report by email? (Optional)
         </label>
@@ -200,13 +200,13 @@ function EmailStep() {
           placeholder="your@email.com"
           className="w-full px-4 py-3 rounded-lg text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
           style={{
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            color: "white",
+            background: "var(--vd-button-bg)",
+            border: "1px solid var(--vd-border)",
+            color: "var(--vd-heading)",
           }}
           autoComplete="email"
         />
-        <p className="mt-2 text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+        <p className="mt-2 text-xs" style={{ color: "var(--vd-faint)" }}>
           No spam. Victor may follow up with relevant infrastructure tips.
         </p>
       </div>
@@ -219,7 +219,7 @@ function EmailStep() {
         }}
       >
         <Shield size={16} style={{ color: "#A855F7", marginTop: "1px", flexShrink: 0 }} />
-        <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
+        <p className="text-xs leading-relaxed" style={{ color: "var(--vd-muted)" }}>
           Your report is based entirely on your self-reported answers. It is not a professional security audit and does not involve any access to your codebase or infrastructure.
         </p>
       </div>
@@ -238,11 +238,11 @@ function CategorySidebar() {
       <div
         className="sticky top-24 p-4 rounded-xl"
         style={{
-          background: "rgba(30, 27, 75, 0.4)",
-          border: "1px solid rgba(255,255,255,0.07)",
+          background: "var(--vd-panel)",
+          border: "1px solid var(--vd-border)",
         }}
       >
-        <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "rgba(255,255,255,0.3)" }}>
+        <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--vd-faint)" }}>
           Categories
         </p>
         <nav>
@@ -261,7 +261,7 @@ function CategorySidebar() {
                         ? "#C084FC"
                         : isDone
                         ? "rgba(16, 185, 129, 0.8)"
-                        : "rgba(255,255,255,0.4)",
+                        : "var(--vd-faint)",
                       border: isActive ? "1px solid rgba(124, 58, 237, 0.3)" : "1px solid transparent",
                     }}
                     aria-current={isActive ? "step" : undefined}
@@ -273,7 +273,7 @@ function CategorySidebar() {
                           ? "rgba(16, 185, 129, 0.2)"
                           : isActive
                           ? "rgba(124, 58, 237, 0.3)"
-                          : "rgba(255,255,255,0.08)",
+                          : "var(--vd-border)",
                         fontSize: "9px",
                       }}
                     >
@@ -342,7 +342,7 @@ export default function Checker() {
     : null;
 
   return (
-    <div style={{ backgroundColor: "#0F0F1A", minHeight: "100vh" }}>
+    <div style={{ backgroundColor: "var(--vd-bg)", minHeight: "100vh" }}>
       <Navbar />
       <main id="main-content" className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Page header */}
@@ -363,7 +363,7 @@ export default function Checker() {
             )}
 
             {/* Navigation */}
-            <div className="flex items-center justify-between mt-8 pt-6" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+            <div className="flex items-center justify-between mt-8 pt-6" style={{ borderTop: "1px solid var(--vd-button-bg)" }}>
               <button
                 onClick={() => {
                   prevCategory();
@@ -372,9 +372,9 @@ export default function Checker() {
                 disabled={currentCategoryIndex === 0}
                 className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-150 disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
                 style={{
-                  background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  color: "rgba(255,255,255,0.7)",
+                  background: "var(--vd-button-bg)",
+                  border: "1px solid var(--vd-border)",
+                  color: "var(--vd-text)",
                 }}
                 aria-label="Previous category"
               >
@@ -404,7 +404,7 @@ export default function Checker() {
 
             {/* Skip / answer later note */}
             {!allAnswered && (
-              <p className="text-center mt-4 text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
+              <p className="text-center mt-4 text-xs" style={{ color: "var(--vd-faint)" }}>
                 You can skip unanswered questions, unanswered questions score 0.
               </p>
             )}

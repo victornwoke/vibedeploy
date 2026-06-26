@@ -53,6 +53,62 @@
 :root {
   --radius: 0.5rem;
 
+  /* VibeDeploy light theme */
+  --background: oklch(0.985 0.006 280);
+  --foreground: oklch(0.18 0.035 275);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.035 275);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.035 275);
+  --primary: oklch(0.52 0.22 295);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.94 0.015 280);
+  --secondary-foreground: oklch(0.28 0.035 275);
+  --muted: oklch(0.94 0.012 280);
+  --muted-foreground: oklch(0.45 0.03 275);
+  --accent: oklch(0.65 0.15 210);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.22 0.035 275 / 12%);
+  --input: oklch(0.22 0.035 275 / 14%);
+  --ring: oklch(0.52 0.22 295);
+  --chart-1: oklch(0.52 0.22 295);
+  --chart-2: oklch(0.65 0.15 210);
+  --chart-3: oklch(0.6 0.22 25);
+  --chart-4: oklch(0.7 0.18 145);
+  --chart-5: oklch(0.75 0.18 75);
+  --sidebar: oklch(0.97 0.006 280);
+  --sidebar-foreground: oklch(0.18 0.035 275);
+  --sidebar-primary: oklch(0.52 0.22 295);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.94 0.015 280);
+  --sidebar-accent-foreground: oklch(0.18 0.035 275);
+  --sidebar-border: oklch(0.22 0.035 275 / 12%);
+  --sidebar-ring: oklch(0.52 0.22 295);
+
+  --vd-bg: #F7F8FC;
+  --vd-bg-rgb: 247, 248, 252;
+  --vd-section: #EEF1F8;
+  --vd-section-rgb: 238, 241, 248;
+  --vd-panel: rgba(255, 255, 255, 0.82);
+  --vd-panel-solid: #FFFFFF;
+  --vd-panel-strong: rgba(255, 255, 255, 0.94);
+  --vd-terminal: #F4F7FB;
+  --vd-footer-bg: #F2F4FA;
+  --vd-heading: #111827;
+  --vd-text: rgba(17, 24, 39, 0.82);
+  --vd-muted: rgba(17, 24, 39, 0.62);
+  --vd-faint: rgba(17, 24, 39, 0.42);
+  --vd-border: rgba(17, 24, 39, 0.12);
+  --vd-border-strong: rgba(124, 58, 237, 0.28);
+  --vd-button-bg: rgba(17, 24, 39, 0.055);
+  --vd-button-bg-hover: rgba(17, 24, 39, 0.09);
+  --vd-mesh-overlay: linear-gradient(to bottom, rgba(var(--vd-bg-rgb),0.28) 0%, rgba(var(--vd-bg-rgb),0.72) 62%, var(--vd-bg) 100%);
+  --vd-grid-line: rgba(124, 58, 237, 0.08);
+}
+
+.dark {
   /* VibeDeploy dark theme */
   --background: oklch(0.09 0.015 280);
   --foreground: oklch(0.94 0.005 280);
@@ -60,32 +116,38 @@
   --card-foreground: oklch(0.94 0.005 280);
   --popover: oklch(0.13 0.025 280);
   --popover-foreground: oklch(0.94 0.005 280);
-  --primary: oklch(0.52 0.22 295);
-  --primary-foreground: oklch(0.98 0 0);
   --secondary: oklch(0.16 0.03 280);
   --secondary-foreground: oklch(0.85 0.01 280);
   --muted: oklch(0.18 0.02 280);
   --muted-foreground: oklch(0.6 0.02 280);
-  --accent: oklch(0.65 0.15 210);
   --accent-foreground: oklch(0.09 0.015 280);
-  --destructive: oklch(0.6 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.52 0.22 295);
-  --chart-1: oklch(0.52 0.22 295);
-  --chart-2: oklch(0.65 0.15 210);
-  --chart-3: oklch(0.6 0.22 25);
-  --chart-4: oklch(0.7 0.18 145);
-  --chart-5: oklch(0.75 0.18 75);
   --sidebar: oklch(0.11 0.02 280);
   --sidebar-foreground: oklch(0.94 0.005 280);
-  --sidebar-primary: oklch(0.52 0.22 295);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
   --sidebar-accent: oklch(0.16 0.03 280);
   --sidebar-accent-foreground: oklch(0.94 0.005 280);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.52 0.22 295);
+
+  --vd-bg: #0F0F1A;
+  --vd-bg-rgb: 15, 15, 26;
+  --vd-section: #0a0a14;
+  --vd-section-rgb: 10, 10, 20;
+  --vd-panel: rgba(30, 27, 75, 0.4);
+  --vd-panel-solid: #1E1B4B;
+  --vd-panel-strong: rgba(30, 27, 75, 0.7);
+  --vd-terminal: #0a0a14;
+  --vd-footer-bg: #080810;
+  --vd-heading: #FFFFFF;
+  --vd-text: rgba(255, 255, 255, 0.78);
+  --vd-muted: rgba(255, 255, 255, 0.56);
+  --vd-faint: rgba(255, 255, 255, 0.34);
+  --vd-border: rgba(255, 255, 255, 0.08);
+  --vd-border-strong: rgba(124, 58, 237, 0.3);
+  --vd-button-bg: rgba(255, 255, 255, 0.06);
+  --vd-button-bg-hover: rgba(255, 255, 255, 0.1);
+  --vd-mesh-overlay: linear-gradient(to bottom, rgba(15,15,26,0.3) 0%, rgba(15,15,26,0.7) 60%, #0F0F1A 100%);
+  --vd-grid-line: rgba(6, 182, 212, 0.04);
 }
 
 @layer base {
@@ -96,8 +158,8 @@
     scroll-behavior: smooth;
   }
   body {
-    background-color: #0F0F1A;
-    color: #f0f0f8;
+    background-color: var(--vd-bg);
+    color: var(--vd-text);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
   button:not(:disabled),
@@ -114,7 +176,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', system-ui, sans-serif;
     font-weight: 700;
-    color: #f0f0f8;
+    color: var(--vd-heading);
   }
   code, pre, .mono {
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
@@ -167,22 +229,22 @@
 
   /* Glass card */
   .glass-card {
-    background: rgba(30, 27, 75, 0.6);
+    background: var(--vd-panel-strong);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(124, 58, 237, 0.2);
+    border: 1px solid var(--vd-border-strong);
   }
 
   .glass-card-subtle {
-    background: rgba(22, 22, 58, 0.8);
+    background: var(--vd-panel);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--vd-border);
   }
 
   /* Terminal card */
   .terminal-card {
-    background: #0a0a14;
+    background: var(--vd-terminal);
     border: 1px solid rgba(6, 182, 212, 0.3);
     font-family: 'JetBrains Mono', monospace;
   }
@@ -247,15 +309,15 @@
 
   /* Navbar glass */
   .navbar-glass {
-    background: rgba(15, 15, 26, 0.85);
+    background: rgba(var(--vd-bg-rgb), 0.88);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--vd-border);
   }
 
   /* Animated mesh background */
   .mesh-bg {
-    background-color: #0F0F1A;
+    background-color: var(--vd-bg);
     background-image:
       radial-gradient(ellipse at 20% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
       radial-gradient(ellipse at 80% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),

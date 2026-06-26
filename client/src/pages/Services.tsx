@@ -133,17 +133,17 @@ const COMPARISON_ROWS = [
 
 function Cell({ value }: { value: boolean | string }) {
   if (value === true) return <CheckCircle2 size={16} style={{ color: "#10B981", margin: "0 auto" }} aria-label="Included" />;
-  if (value === false) return <span style={{ color: "rgba(255,255,255,0.2)", display: "block", textAlign: "center" }} aria-label="Not included">—</span>;
+  if (value === false) return <span style={{ color: "var(--vd-faint)", display: "block", textAlign: "center" }} aria-label="Not included">—</span>;
   return <span style={{ color: "#06B6D4", fontSize: "0.75rem", display: "block", textAlign: "center" }}>{value}</span>;
 }
 
 export default function Services() {
   return (
-    <div style={{ backgroundColor: "#0F0F1A", minHeight: "100vh" }}>
+    <div style={{ backgroundColor: "var(--vd-bg)", minHeight: "100vh" }}>
       <Navbar />
       <main id="main-content">
         {/* Hero */}
-        <section className="py-16 md:py-20" style={{ backgroundColor: "#0F0F1A" }}>
+        <section className="py-16 md:py-20" style={{ backgroundColor: "var(--vd-bg)" }}>
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5 text-xs font-semibold tracking-widest uppercase"
@@ -157,13 +157,13 @@ export default function Services() {
             </div>
             <h1
               className="font-bold mb-4"
-              style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "white" }}
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "var(--vd-heading)" }}
             >
               Four ways to go from risky
               <br />
               <span className="gradient-text">to production-ready.</span>
             </h1>
-            <p className="max-w-xl mx-auto mb-8" style={{ color: "rgba(255,255,255,0.5)", fontSize: "1rem" }}>
+            <p className="max-w-xl mx-auto mb-8" style={{ color: "var(--vd-muted)", fontSize: "1rem" }}>
               Start with the free checker to understand your gaps, then choose the service that matches your timeline and budget.
             </p>
             <Link
@@ -177,7 +177,7 @@ export default function Services() {
         </section>
 
         {/* Service cards */}
-        <section className="py-12" style={{ backgroundColor: "#0a0a14" }}>
+        <section className="py-12" style={{ backgroundColor: "var(--vd-section)" }}>
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {SERVICES.map((s) => (
@@ -187,10 +187,10 @@ export default function Services() {
                   style={{
                     background: s.highlight
                       ? "linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(37, 99, 235, 0.12))"
-                      : "rgba(30, 27, 75, 0.4)",
+                      : "var(--vd-panel)",
                     border: s.highlight
                       ? "1px solid rgba(124, 58, 237, 0.4)"
-                      : "1px solid rgba(255,255,255,0.07)",
+                      : "1px solid var(--vd-border)",
                     boxShadow: s.highlight ? "0 0 40px rgba(124, 58, 237, 0.12)" : "none",
                   }}
                 >
@@ -227,27 +227,27 @@ export default function Services() {
                         {s.price}
                       </div>
                       <div className="flex items-center gap-2">
-                        <Clock size={11} style={{ color: "rgba(255,255,255,0.3)" }} />
-                        <span className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+                        <Clock size={11} style={{ color: "var(--vd-faint)" }} />
+                        <span className="text-xs" style={{ color: "var(--vd-faint)" }}>
                           {s.delivery}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <h2 className="font-bold mb-1" style={{ color: "white", fontSize: "1.125rem" }}>
+                  <h2 className="font-bold mb-1" style={{ color: "var(--vd-heading)", fontSize: "1.125rem" }}>
                     {s.title}
                   </h2>
                   <p className="text-sm mb-3" style={{ color: s.colour }}>
                     {s.tagline}
                   </p>
-                  <p className="text-sm leading-relaxed mb-5 flex-1" style={{ color: "rgba(255,255,255,0.5)" }}>
+                  <p className="text-sm leading-relaxed mb-5 flex-1" style={{ color: "var(--vd-muted)" }}>
                     {s.description}
                   </p>
 
                   <ul className="space-y-2 mb-6">
                     {s.includes.map((item) => (
-                      <li key={item} className="flex items-start gap-2.5 text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
+                      <li key={item} className="flex items-start gap-2.5 text-sm" style={{ color: "var(--vd-text)" }}>
                         <CheckCircle2 size={13} style={{ color: "#10B981", marginTop: "2px", flexShrink: 0 }} />
                         {item}
                       </li>
@@ -268,21 +268,21 @@ export default function Services() {
         </section>
 
         {/* Comparison table */}
-        <section className="py-16" style={{ backgroundColor: "#0F0F1A" }}>
+        <section className="py-16" style={{ backgroundColor: "var(--vd-bg)" }}>
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <h2
               className="font-bold mb-8 text-center"
-              style={{ color: "white", fontSize: "clamp(1.5rem, 2.5vw, 2rem)" }}
+              style={{ color: "var(--vd-heading)", fontSize: "clamp(1.5rem, 2.5vw, 2rem)" }}
             >
               Full comparison
             </h2>
-            <div className="overflow-x-auto rounded-xl" style={{ border: "1px solid rgba(255,255,255,0.07)" }}>
+            <div className="overflow-x-auto rounded-xl" style={{ border: "1px solid var(--vd-border)" }}>
               <table className="w-full" style={{ borderCollapse: "collapse" }}>
                 <thead>
-                  <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+                  <tr style={{ borderBottom: "1px solid var(--vd-border)" }}>
                     <th
                       className="text-left p-4 text-xs font-semibold tracking-widest uppercase"
-                      style={{ color: "rgba(255,255,255,0.3)", background: "rgba(30,27,75,0.6)", minWidth: "180px" }}
+                      style={{ color: "var(--vd-faint)", background: "var(--vd-panel-strong)", minWidth: "180px" }}
                     >
                       Feature
                     </th>
@@ -290,7 +290,7 @@ export default function Services() {
                       <th
                         key={h}
                         className="p-4 text-xs font-semibold tracking-widest uppercase text-center"
-                        style={{ color: "rgba(255,255,255,0.3)", background: "rgba(30,27,75,0.6)" }}
+                        style={{ color: "var(--vd-faint)", background: "var(--vd-panel-strong)" }}
                       >
                         {h}
                       </th>
@@ -302,11 +302,11 @@ export default function Services() {
                     <tr
                       key={row.label}
                       style={{
-                        borderBottom: i < COMPARISON_ROWS.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none",
-                        background: i % 2 === 0 ? "rgba(30,27,75,0.2)" : "transparent",
+                        borderBottom: i < COMPARISON_ROWS.length - 1 ? "1px solid var(--vd-border)" : "none",
+                        background: i % 2 === 0 ? "var(--vd-panel)" : "transparent",
                       }}
                     >
-                      <td className="p-4 text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
+                      <td className="p-4 text-sm" style={{ color: "var(--vd-muted)" }}>
                         {row.label}
                       </td>
                       <td className="p-4"><Cell value={row.audit} /></td>
@@ -322,12 +322,12 @@ export default function Services() {
         </section>
 
         {/* FAQ / trust section */}
-        <section className="py-16" style={{ backgroundColor: "#0a0a14" }}>
+        <section className="py-16" style={{ backgroundColor: "var(--vd-section)" }}>
           <div className="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-bold mb-4" style={{ color: "white", fontSize: "1.75rem" }}>
+            <h2 className="font-bold mb-4" style={{ color: "var(--vd-heading)", fontSize: "1.75rem" }}>
               Not sure which service you need?
             </h2>
-            <p className="mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>
+            <p className="mb-8" style={{ color: "var(--vd-muted)" }}>
               Take the free checker first. Your score report will automatically recommend the most relevant service based on your specific gaps.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -342,9 +342,9 @@ export default function Services() {
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-lg transition-colors"
                 style={{
-                  background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  color: "rgba(255,255,255,0.7)",
+                  background: "var(--vd-button-bg)",
+                  border: "1px solid var(--vd-border)",
+                  color: "var(--vd-text)",
                 }}
               >
                 Ask Victor Directly

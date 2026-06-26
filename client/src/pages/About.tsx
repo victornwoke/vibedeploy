@@ -24,11 +24,11 @@ const WHY_VIBEDEPLOY = [
 
 export default function About() {
   return (
-    <div style={{ backgroundColor: "#0F0F1A", minHeight: "100vh" }}>
+    <div style={{ backgroundColor: "var(--vd-bg)", minHeight: "100vh" }}>
       <Navbar />
       <main id="main-content">
         {/* Hero */}
-        <section className="py-16 md:py-20" style={{ backgroundColor: "#0F0F1A" }}>
+        <section className="py-16 md:py-20" style={{ backgroundColor: "var(--vd-bg)" }}>
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
@@ -44,11 +44,11 @@ export default function About() {
                 </div>
                 <h1
                   className="font-bold mb-4"
-                  style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "white" }}
+                  style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "var(--vd-heading)" }}
                 >
                   Built by someone who has seen what breaks in production.
                 </h1>
-                <p className="mb-6 leading-relaxed" style={{ color: "rgba(255,255,255,0.55)", fontSize: "1rem" }}>
+                <p className="mb-6 leading-relaxed" style={{ color: "var(--vd-muted)", fontSize: "1rem" }}>
                   VibeDeploy was created by Victor Nwoke — a Cloud and DevOps engineer with hands-on experience building and maintaining infrastructure on Azure, AWS, and GCP.
                 </p>
                 <div className="flex gap-3">
@@ -65,9 +65,9 @@ export default function About() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-3 text-sm font-medium rounded-lg transition-colors"
                     style={{
-                      background: "rgba(255,255,255,0.06)",
-                      border: "1px solid rgba(255,255,255,0.1)",
-                      color: "rgba(255,255,255,0.7)",
+                      background: "var(--vd-button-bg)",
+                      border: "1px solid var(--vd-border)",
+                      color: "var(--vd-text)",
                     }}
                   >
                     Victor's Portfolio
@@ -111,16 +111,16 @@ export default function About() {
         </section>
 
         {/* Why VibeDeploy */}
-        <section className="py-16" style={{ backgroundColor: "#0a0a14" }}>
+        <section className="py-16" style={{ backgroundColor: "var(--vd-section)" }}>
           <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
-                <h2 className="font-bold mb-6" style={{ color: "white", fontSize: "1.75rem" }}>
+                <h2 className="font-bold mb-6" style={{ color: "var(--vd-heading)", fontSize: "1.75rem" }}>
                   Why VibeDeploy exists
                 </h2>
                 <div className="space-y-4">
                   {WHY_VIBEDEPLOY.map((para, i) => (
-                    <p key={i} className="leading-relaxed" style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9375rem" }}>
+                    <p key={i} className="leading-relaxed" style={{ color: "var(--vd-muted)", fontSize: "0.9375rem" }}>
                       {para}
                     </p>
                   ))}
@@ -129,7 +129,7 @@ export default function About() {
 
               {/* Credentials */}
               <div>
-                <h2 className="font-bold mb-6" style={{ color: "white", fontSize: "1.75rem" }}>
+                <h2 className="font-bold mb-6" style={{ color: "var(--vd-heading)", fontSize: "1.75rem" }}>
                   Technical credentials
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -138,8 +138,8 @@ export default function About() {
                       key={cred.label}
                       className="p-4 rounded-xl flex items-start gap-3"
                       style={{
-                        background: "rgba(30, 27, 75, 0.4)",
-                        border: "1px solid rgba(255,255,255,0.07)",
+                        background: "var(--vd-panel)",
+                        border: "1px solid var(--vd-border)",
                       }}
                     >
                       <div
@@ -149,10 +149,10 @@ export default function About() {
                         <cred.icon size={15} style={{ color: "#A855F7" }} />
                       </div>
                       <div>
-                        <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.85)" }}>
+                        <p className="text-sm font-semibold" style={{ color: "var(--vd-text)" }}>
                           {cred.label}
                         </p>
-                        <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.35)" }}>
+                        <p className="text-xs mt-0.5" style={{ color: "var(--vd-faint)" }}>
                           {cred.detail}
                         </p>
                       </div>
@@ -170,10 +170,10 @@ export default function About() {
                   <div className="flex items-start gap-3">
                     <CheckCircle2 size={16} style={{ color: "#10B981", marginTop: "1px", flexShrink: 0 }} />
                     <div>
-                      <p className="text-sm font-semibold mb-1" style={{ color: "rgba(255,255,255,0.85)" }}>
+                      <p className="text-sm font-semibold mb-1" style={{ color: "var(--vd-text)" }}>
                         Real-world production experience
                       </p>
-                      <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
+                      <p className="text-sm leading-relaxed" style={{ color: "var(--vd-muted)" }}>
                         Victor has built and maintained production infrastructure for SaaS products, fintech applications, and enterprise systems. The VibeDeploy scoring model is based on patterns observed across real codebases.
                       </p>
                     </div>
@@ -185,12 +185,12 @@ export default function About() {
         </section>
 
         {/* CTA */}
-        <section className="py-16" style={{ backgroundColor: "#0F0F1A" }}>
+        <section className="py-16" style={{ backgroundColor: "var(--vd-bg)" }}>
           <div className="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-bold mb-4" style={{ color: "white", fontSize: "1.75rem" }}>
+            <h2 className="font-bold mb-4" style={{ color: "var(--vd-heading)", fontSize: "1.75rem" }}>
               Ready to see where your app stands?
             </h2>
-            <p className="mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>
+            <p className="mb-8" style={{ color: "var(--vd-muted)" }}>
               The checker is free, takes 5 minutes, and gives you an honest picture of your production readiness.
             </p>
             <Link
