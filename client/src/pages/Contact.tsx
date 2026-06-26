@@ -64,8 +64,9 @@ export default function Contact() {
       : rawFormspree
     : undefined;
 
-  // Always call the hook with a string - pass empty string if missing
-  const [state, formspreeSubmit] = useForm(formspreeId ?? "");
+  // Formspree throws during render if the key is empty. When production has no
+  // form ID configured, keep the hook inert and use the mailto fallback below.
+  const [state, formspreeSubmit] = useForm(formspreeId ?? "vibedeploy-mailto-fallback");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -255,7 +256,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={
-                      !form.name || !form.email || !form.subject || !form.message || !formspreeId
+                      !form.name || !form.email || !form.subject || !form.message
                     }
                     className="w-full px-6 py-3.5 text-sm font-semibold text-white rounded-xl btn-primary disabled:opacity-40 disabled:cursor-not-allowed"
                   >
