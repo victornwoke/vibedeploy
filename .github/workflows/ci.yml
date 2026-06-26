@@ -34,6 +34,8 @@ jobs:
 
       - name: Build production assets
         run: pnpm run build
+        env:
+          VITE_FORMSPREE_CONTACT_FORM_ID: ${{ vars.VITE_FORMSPREE_CONTACT_FORM_ID || secrets.VITE_FORMSPREE_CONTACT_FORM_ID }}
 
       - name: Run dependency audit
         run: pnpm audit --audit-level=low
